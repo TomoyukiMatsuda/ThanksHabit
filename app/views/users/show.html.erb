@@ -1,2 +1,12 @@
-<h1>Users#show</h1>
-<p>Find me in app/views/users/show.html.erb</p>
+<h1 class="text-center"><%= @user.name %>さんのページ</h1>
+
+<div class="mt-4">
+  <div class="card" style="width: 30rem;">
+    <div class="card-body">
+      <h4 class="card-title text-center"><%= @user.name %> さん</h4>
+    </div>
+    <div class="card-body">
+      <%= link_to 'アカウント情報編集', edit_user_path(current_user) %>
+    </div>
+  </div>
+</div>
