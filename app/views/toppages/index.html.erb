@@ -1,3 +1,28 @@
-<h3>ThanksHabitは</h3>
-<h3>「感謝を伝える」を習慣化するアプリです。</h3>
-<p>アカウントをお持ちでない方は <%= link_to 'こちら', signup_path %></p>
+<% if logged_in? %>
+  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+<% else %>
+  <h3 class="text-center">ThanksHabitは</h3>
+  <h3 class="text-center">「感謝を伝える」を習慣化するアプリです。</h3>
+
+  <div class="row mt-5">
+    <div class="col-sm-6 offset-sm-3">
+
+      <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
+
+        <div class="form-group">
+          <%= f.label :email, 'メールアドレス' %>
+          <%= f.email_field :email, class: 'form-control' %>
+        </div>
+
+        <div class="form-group">
+          <%= f.label :password, 'パスワード（8文字以上）' %>
+          <%= f.password_field :password, class: 'form-control' %>
+        </div>
+
+        <%= f.submit 'ログイン', class: 'btn btn-primary btn-block' %>
+      <% end %>
+
+      <p class="text-right">アカウントをお持ちでない方は <%= link_to 'こちら', signup_path %></p>
+    </div>
+  </div>
+<% end %>
