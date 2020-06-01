@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   skip_before_action :login_required, only: [:new, :create]
+  before_action :set_user, only: [:show, :edit, :update]
 
   def new
     @user = User.new
@@ -25,6 +26,13 @@ class UsersController < ApplicationController
   end
 
   def update
+    if @user.update_attributes(user_params)
+      flash[:success] = 'ユーザ情報を更新しました'
+      redirect_to @user
+    else
+      flash.now[:danger] = 'ユーザ情報の更新に失敗しました'
+      render :edit
+    end
   end
 
   private
