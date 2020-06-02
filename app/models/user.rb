@@ -7,4 +7,7 @@ class User < ApplicationRecord
                     uniqueness: { case_sensitive: false }
   has_secure_password
   validates :password, presence: true, length: { minimum: 8 }
+
+  has_many :group_users
+  has_many :belong_groups, through: :group_users, source: :group
 end
