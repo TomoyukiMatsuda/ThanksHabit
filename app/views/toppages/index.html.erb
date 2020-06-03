@@ -1,5 +1,14 @@
 <% if logged_in? %>
-  <p>ログイン完了ユーザ: <%= current_user.name %></p>
+  <h3>"<%= current_user.name %>"さん 1日1回大切な人に感謝を伝えましょう</h3>
+  <% @groups.each do |group| %>
+    <div class="card mb-4">
+      <h4 class="card-header text-center text-white bg-dark">グループ名: <%= link_to "#{group.name}", group, class: 'text-white' %></h4>
+      <div class="card-body">
+      </div>
+    </div>
+  <% end %>
+<%= paginate @groups %>
+
 <% else %>
   <h3 class="text-center">ThanksHabitは</h3>
   <h3 class="text-center">「感謝を伝える」を習慣化するアプリです。</h3>
