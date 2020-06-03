@@ -1,0 +1,13 @@
+<h1 class="text-center"><%= @group.name %>ページ</h1>
+
+<div class="mt-4">
+  <div class="card" style="width: 30rem;">
+    <div class="card-body">
+      <h4 class="card-title text-center"><%= @group.name %></h4>
+    </div>
+    <div class="card-body">
+      <%= link_to 'グループにユーザを追加', '#' %><br>
+      <%= link_to 'グループ名変更', edit_group_path(@group) %>
+    </div>
+  </div>
+</div>
