@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update]
+  before_action :set_group, only: [:show, :edit, :update, :search_user]
 
   def new
     @group = Group.new
@@ -33,6 +33,10 @@ class GroupsController < ApplicationController
       flash.now[:danger] = 'グループ名変更に失敗しました'
       render :edit
     end
+  end
+
+  def search_user
+    @users = User.order(id: :desc).page(params[:page]).per(10)
   end
 
   private
