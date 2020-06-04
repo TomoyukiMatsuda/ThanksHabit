@@ -6,6 +6,10 @@ class GroupUsersController < ApplicationController
     redirect_to group_url(group_user.group_id)
   end
 
+  def invite
+    @group_user = GroupUser.find_by(id: params[:id])
+  end
+
   private
 
   def group_user_params
