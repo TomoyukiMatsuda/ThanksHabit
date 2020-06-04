@@ -36,7 +36,8 @@ class GroupsController < ApplicationController
   end
 
   def search_user
-    @users = User.order(id: :desc).page(params[:page]).per(10)
+    # ログインユーザ以外のユーザを取得
+    @users = User.order(id: :desc).where.not(id: current_user.id).page(params[:page]).per(10)
     @group_user = GroupUser.new # form_with用
   end
 
