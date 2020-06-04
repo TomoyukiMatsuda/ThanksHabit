@@ -37,6 +37,7 @@ class GroupsController < ApplicationController
 
   def search_user
     @users = User.order(id: :desc).page(params[:page]).per(10)
+    @group_user = GroupUser.new # form_with用
   end
 
   private

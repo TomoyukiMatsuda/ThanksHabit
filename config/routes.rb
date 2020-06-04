@@ -11,4 +11,5 @@ Rails.application.routes.draw do
       get :search_user
     end
   end
+  resources :group_users, only: [:create, :destroy]
 end

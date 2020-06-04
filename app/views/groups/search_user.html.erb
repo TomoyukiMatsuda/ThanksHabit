@@ -10,7 +10,13 @@
     <% @users.each do |user| %>
       <tr>
         <td><%= user.name %> さん</td>
-        <td>招待するボタン or グループ参加状況確認表示</td>
+        <td>
+          <%= form_with(model: @group_user, local: true) do |f| %>
+            <%= f.hidden_field :user_id, value: user.id %>
+            <%= f.hidden_field :group_id, value: @group.id %>
+            <%= f.submit "#{user.name}さんを招待", data: { confirm: "#{user.name}さんを招待しますか？" }, class: 'btn btn-primary btn-block' %>
+          <% end %>
+        </td>
       </tr>
     <% end %>
   </tbody>
