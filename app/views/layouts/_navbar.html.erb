@@ -4,6 +4,11 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
+          <% if invited_groups %>
+            <% invited_groups.each do |invited_group| %>
+              <li class="nav-item"><%= link_to "#{invited_group.group.name}からの招待", invite_group_user_path(invited_group), class: 'nav-link' %></li>
+            <% end %>
+          <% end %>
           <li class="nav-item"><%= link_to '新規グループ作成', new_group_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ユーザ詳細', current_user, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: 'nav-link' %></li>
