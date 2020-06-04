@@ -9,6 +9,6 @@
       <p><%= link_to "#{user.name}", user %></p>
     <% end %>
   </div>
-   <%= link_to 'グループにユーザを追加', '#' %><br>
+   <%= link_to 'グループにユーザを追加', search_user_group_path(@group) %><br>
    <%= link_to 'グループ名変更', edit_group_path(@group) %>
 </div>
