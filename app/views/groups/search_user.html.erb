@@ -1,0 +1,17 @@
+<h3>"<%= @group.name %>"にユーザを招待する</h3>
+<table class="table">
+  <thead>
+    <tr>
+      <th>ユーザ名</th>
+      <th>招待状況</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %> さん</td>
+        <td>招待するボタン or グループ参加状況確認表示</td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

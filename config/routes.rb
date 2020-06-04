@@ -6,5 +6,9 @@ Rails.application.routes.draw do
 
   get 'signup', to: 'users#new'
   resources :users, only: [:create, :show, :edit, :update]
-  resources :groups, only: [:new, :create, :show, :edit, :update]
+  resources :groups, only: [:new, :create, :show, :edit, :update] do
+    member do
+      get :search_user
+    end
+  end
 end
