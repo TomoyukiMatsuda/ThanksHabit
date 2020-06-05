@@ -1,1 +1,4 @@
 <h3>"<%= @group_user.group.name %>" から招待されています</h3>
+
+<%= link_to '参加する', permit_group_user_path(@group_user), method: :put, data: { confirm: "#{@group_user.group.name}に参加しますか？" }, class: 'btn btn-primary btn-md' %>
+<%= link_to '辞退する', group_user_path(@group_user), method: :delete, data: { confirm: "本当に「#{@group_user.group.name}」からの招待を辞退しますか？" }, class: 'btn btn-secondary btn-md' %>
