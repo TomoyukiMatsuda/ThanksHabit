@@ -19,7 +19,7 @@ class GroupsController < ApplicationController
   end
 
   def show
-    @users = @group.belong_users.order(id: :desc).page(params[:page]).per(5)
+    @users = @group.users.order(id: :desc).page(params[:page]).per(5)
   end
 
   def edit

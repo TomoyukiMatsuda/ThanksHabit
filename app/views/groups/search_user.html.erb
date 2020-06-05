@@ -9,7 +9,7 @@
   <tbody>
     <% @users.each do |user| %>
       <!-- このグループに所属していない且つ招待されていない場合のみ表示 !-->
-      <% unless user.belong_groups.include?(@group) %>
+      <% unless user.groups.include?(@group) %>
         <tr>
           <td><%= user.name %> さん</td>
           <td>

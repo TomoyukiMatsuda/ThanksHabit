@@ -9,5 +9,5 @@ class User < ApplicationRecord
   validates :password, presence: true, length: { minimum: 8 }
 
   has_many :group_users
-  has_many :belong_groups, through: :group_users, source: :group
+  has_many :groups, through: :group_users, source: :group
 end
