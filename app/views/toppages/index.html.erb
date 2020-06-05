@@ -1,11 +1,18 @@
 <% if logged_in? %>
   <h3>"<%= current_user.name %>"さん 1日1回大切な人に感謝を伝えましょう</h3>
   <% @groups.each do |group| %>
-    <div class="card mb-4">
-      <h4 class="card-header text-center text-white bg-dark">グループ名: <%= link_to "#{group.name}", group, class: 'text-white' %></h4>
-      <div class="card-body">
+    <% if permitted_group_user?(current_user, group) %> <!--参加済みグループのみを表示!-->
+      <div class="card mb-4">
+        <h4 class="card-header text-center text-white bg-dark">グループ名: <%= link_to "#{group.name}", group, class: 'text-white' %></h4>
+        <div class="card-body">
+          <% group.users.each do |user| %>
+            <% if current_user != user && permitted_group_user?(user, group) %> <!--ログインユーザでない 且つ 参加済みユーザのみを表示 !-->
+              <p>"<%= user.name %>" さんに今日も感謝を伝えよう</p>
+            <% end %>
+          <% end %>
+        </div>
       </div>
-    </div>
+    <% end %>
   <% end %>
 <%= paginate @groups %>
 

@@ -4,11 +4,9 @@ module GroupUsersHelper
     @unpermit_group_users = user.group_users.where(permission: false)
   end
 
-  # group_userレコードのpermission:true or false を判定するメソッド
+  # group_userレコードのpermission:true or false を判定
   def permitted_group_user?(user, group)
-    # userが所属するgroupの中から、groupのidと同じレコードのみをgroup_usersとして取得
     group_user = user.group_users.find_by(group_id: group.id)
-    # そのレコードのpermissionの値を返す(true or false)
-    group_user.permission
+    group_user.permission # permissionの値を返す(true or false)
   end
 end
