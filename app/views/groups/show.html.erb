@@ -5,9 +5,15 @@
     <div class="card-body">
       <h4 class="card-title text-center">"<%= @group.name %>"のユーザ</h4>
     </div>
+
     <% @users.each do |user| %>
-      <p><%= link_to "#{user.name}", user %></p>
+      <% if permitted_group_user?(user, @group) %>
+        <p><%= link_to user.name, user %></p>
+      <% else %>
+        <p><%= user.name %> さんを招待中</p>
+      <% end %>
     <% end %>
+
   </div>
    <%= link_to 'グループにユーザを追加', search_user_group_path(@group) %><br>
    <%= link_to 'グループ名変更', edit_group_path(@group) %>

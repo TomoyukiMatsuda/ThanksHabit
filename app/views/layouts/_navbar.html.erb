@@ -4,9 +4,9 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <% if invited_groups %>
-            <% invited_groups.each do |invited_group| %>
-              <li class="nav-item"><%= link_to "#{invited_group.group.name}からの招待", invite_group_user_path(invited_group), class: 'nav-link' %></li>
+          <% if unpermit_group_users(current_user) %>
+            <% unpermit_group_users(current_user).each do |unpermit_group_user| %>
+              <li class="nav-item"><%= link_to "#{unpermit_group_user.group.name}からの招待", invite_group_user_path(unpermit_group_user), class: 'nav-link' %></li>
             <% end %>
           <% end %>
           <li class="nav-item"><%= link_to '新規グループ作成', new_group_path, class: 'nav-link' %></li>
