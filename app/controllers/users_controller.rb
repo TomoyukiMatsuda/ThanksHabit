@@ -20,7 +20,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @groups = current_user.groups.order(id: :desc).page(params[:page]).per(5)
+    @groups = @user.groups.order(id: :asc)
   end
 
   def edit
