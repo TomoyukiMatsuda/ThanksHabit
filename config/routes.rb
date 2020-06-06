@@ -13,6 +13,8 @@ Rails.application.routes.draw do
     end
   end
 
+  resources :thanks, only: [:create, :destroy]
+
   resources :group_users, only: [:create, :destroy] do
     member do
       get :invite
