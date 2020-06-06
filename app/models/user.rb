@@ -10,4 +10,6 @@ class User < ApplicationRecord
 
   has_many :group_users
   has_many :groups, through: :group_users, source: :group
+  has_many :thanks #user.thanksでuserの送ったthanksを取得
+  has_many :receiver_thanks, class_name: 'Thank', foreign_key: 'receiver_id' #user.receiver_thanksでuserの受け取ったthanksを取得
 end
