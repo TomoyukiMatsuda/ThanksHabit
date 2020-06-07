@@ -16,7 +16,7 @@ class ThanksController < ApplicationController
 
   def destroy
     thank = Thank.find_by(id: params[:id])
-    # ここに削除する処理を記述する メソッドを適用する？ ビュー表示工夫
+    thank.undo
     flash[:warning] = '習慣の状態を元に戻しました'
     redirect_back(fallback_location: root_url)
   end

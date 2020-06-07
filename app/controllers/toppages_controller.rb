@@ -3,11 +3,9 @@ class ToppagesController < ApplicationController
   
   def index
     if logged_in?
-      @thank = current_user.thanks.build
       @groups = current_user.groups.order(id: :desc).page(params[:page]).per(5)
-
-      # テスト用
-      @thanks = current_user.thanks
+      @thank = current_user.thanks.build # form_with 用
+      @thanks = current_user.thanks.where.not(created_at: nil) # 上記@thankを除外して検索
     end
   end
 end
