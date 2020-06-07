@@ -6,8 +6,23 @@
         <h4 class="card-header text-center text-white bg-dark">グループ名: <%= link_to "#{group.name}", group, class: 'text-white' %></h4>
         <div class="card-body">
           <% group.users.each do |user| %>
-            <% if current_user != user && permitted_group_user?(user, group) %> <!--ログインユーザでない 且つ 参加済みユーザのみを表示 !-->
-              <p>"<%= user.name %>" さんに今日も感謝を伝えよう</p>
+            <% if current_user != user && permitted_group_user?(user, group) %> <!--ログインユーザでない 且つ 参加済みユーザの場合のみを表示 !-->
+              
+              <%= form_with model: @thank, local: true do |f| %>
+                <%= render 'layouts/error_messages', model: f.object %>
+                
+                <div class="form-group">                  
+                  <%= f.label :content, "#{user.name} さんへの感謝"%>
+                  <%= f.text_field :content, class: 'form-control' %>
+                </div>
+                  <%= f.hidden_field :receiver_id, value: user.id %>
+                  <%= f.hidden_field :group_id, value: group.id %>
+                  <%= f.submit '感謝を登録!!', class: 'form-control btn btn-sm btn-info' %>
+              <% end %>
+
+              <% @thanks.each do |thank| %>
+                <p>内容：<%= thank.content %></p>
+              <% end %>
             <% end %>
           <% end %>
         </div>
