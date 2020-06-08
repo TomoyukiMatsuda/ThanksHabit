@@ -21,6 +21,7 @@ class UsersController < ApplicationController
 
   def show
     @groups = @user.groups.order(id: :asc)
+    @thanks = @user.thanks.order(id: :desc)
   end
 
   def edit

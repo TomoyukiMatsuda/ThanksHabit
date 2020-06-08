@@ -15,5 +15,25 @@
     <% end %>
 
   </div>
+  <!-- ログインユーザをの場合のみ表示 !-->
   <%= link_to 'アカウント情報編集', edit_user_path(current_user) %>
 </div>
+
+<table class="table mt-4">
+  <thead class="bg-secondary text-white">
+    <tr>
+      <th><%= @user.name %> さんが感謝した人</th>
+      <th>感謝の内容</th>
+      <th>日付</th>
+    </tr>
+  </thead>
+  <% @thanks.each do |thank| %>
+    <tbody>
+      <tr>
+        <td><%= thank.receiver.name %></td>
+        <td><%= thank.content %></td>
+        <td><%= l thank.created_at %></td>
+      </tr>
+    </tbody>
+  <% end %>
+</table>
