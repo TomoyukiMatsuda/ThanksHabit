@@ -20,6 +20,7 @@ class GroupsController < ApplicationController
 
   def show
     @users = @group.users.order(id: :asc)
+    @thanks = @group.thanks.order(id: :desc)
   end
 
   def edit
