@@ -1,20 +1,39 @@
-<h1 class="text-center">"<%= @group.name %>"のページ</h1>
+<h1 class="text-center">"<%= @group.name %>"みんなの感謝</h1>
 
-<div class="mt-4">
-  <div class="card" style="width: 30rem;">
-    <div class="card-body">
-      <h4 class="card-title text-center">"<%= @group.name %>"のユーザ</h4>
-    </div>
+    <div class="card" style="width: 18rem;">
+      <div class="card-body">
+        <h4 class="card-title text-center">"<%= @group.name %>"</h4>
+      </div>
 
-    <% @users.each do |user| %>
-      <% if permitted_group_user?(user, @group) %>
-        <p><%= link_to user.name, user %></p>
-      <% else %>
-        <p><%= user.name %> さんを招待中</p>
+      <% @users.each do |user| %>
+        <% if permitted_group_user?(user, @group) %>
+          <p><%= link_to user.name, user %></p>
+        <% else %>
+          <p><%= user.name %> さんを招待中</p>
+        <% end %>
       <% end %>
-    <% end %>
 
-  </div>
-   <%= link_to 'グループにユーザを追加', search_user_group_path(@group) %><br>
-   <%= link_to 'グループ名変更', edit_group_path(@group) %>
-</div>
+    </div>
+    <%= link_to 'グループにユーザを追加', search_user_group_path(@group) %><br>
+    <%= link_to 'グループ名変更', edit_group_path(@group) %>
+
+    <table class="table mt-4">
+      <thead class="bg-secondary text-white">
+        <tr>
+          <th>感謝した人</th>
+          <th>感謝された人</th>
+          <th>感謝の内容</th>
+          <th>日付</th>
+        </tr>
+      </thead>
+      <% @thanks.each do |thank| %>
+        <tbody>
+          <tr>
+            <td><%= thank.user.name %></td>
+            <td><%= thank.receiver.name %></td>
+            <td><%= thank.content %></td>
+            <td><%= l thank.created_at %></td>
+          </tr>
+        </tbody>
+      <% end %>
+    </table>
