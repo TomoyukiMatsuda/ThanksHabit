@@ -3,13 +3,13 @@ class ThanksController < ApplicationController
   def create
     @thank = current_user.thanks.build(thank_params)
 
-    if @thank.save
+    if @thank.tell_thank(current_user, thank_params[:receiver_id], thank_params[:group_id])
       flash[:success] = '感謝を登録しました'
       redirect_to root_url
     else
       flash.now[:danger] = '感謝の登録に失敗しました'
       @groups = current_user.groups.order(id: :desc).page(params[:page]).per(5)
-      @thanks = current_user.thanks # テスト用
+      @thanks = current_user.thanks.where.not(created_at: nil)
       render 'toppages/index'
     end
   end
