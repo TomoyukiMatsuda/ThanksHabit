@@ -13,10 +13,12 @@
               <% else %>
 
                 <%= form_with model: @thank, local: true do |f| %>
-                  <%= render 'layouts/error_messages', model: f.object %>
-                  
+                  <% if @thank.receiver_id == user.id && @thank.group_id == group.id %>
+                    <%= render 'layouts/error_messages', model: f.object %>
+                  <% end %>
+
                   <div class="form-group">
-                    <%= f.label :content, "#{user.name} さんへ感謝"%>
+                    <%= f.label :content, "#{user.name} さんへ感謝" %>
                     <%= f.text_field :content, class: 'form-control' %>
                   </div>
                     <%= f.hidden_field :receiver_id, value: user.id %>
