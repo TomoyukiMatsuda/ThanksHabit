@@ -1,8 +1,8 @@
 class ThanksController < ApplicationController
 
   def create
+    # @thankにはデータあり
     @thank = current_user.thanks.build(thank_params)
-
     if @thank.tell_thank(current_user, thank_params[:receiver_id], thank_params[:group_id])
       flash[:success] = '感謝を登録しました'
       redirect_to root_url

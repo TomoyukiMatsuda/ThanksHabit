@@ -11,21 +11,12 @@
               <% if thank_today(@thanks, user, group) %> <!-- 今日の感謝登録あるかないかで表示内容を変更 !-->
                 <p><%= user.name %>さんに感謝を伝えました <%= link_to '元に戻す', thank_path(@today_thank), method: :delete, class: 'btn btn-secondary btn-md' %></p>
               <% else %>
-
-                <%= form_with model: @thank, local: true do |f| %>
-                  <% if @thank.receiver_id == user.id && @thank.group_id == group.id %>
-                    <%= render 'layouts/error_messages', model: f.object %>
-                  <% end %>
-
-                  <div class="form-group">
-                    <%= f.label :content, "#{user.name} さんへ感謝" %>
-                    <%= f.text_field :content, class: 'form-control' %>
-                  </div>
-                    <%= f.hidden_field :receiver_id, value: user.id %>
-                    <%= f.hidden_field :group_id, value: group.id %>
-                    <%= f.submit '感謝', class: 'form-control btn btn-sm btn-info' %>
+                <% if @thank.receiver_id == user.id && @thank.group_id == group.id %> <!-- 操作フォームには既存インスタンスをそのほかには新規インスタンスを渡す !-->
+                  <%= render 'thanks/thank_form', thank: @thank, user: user, group: group %>
+                <% else %>
+                  <% @thank = current_user.thanks.build %>
+                  <%= render 'thanks/thank_form', thank: @thank, user: user, group: group %>
                 <% end %>
-
               <% end %>
 
             <% end %>
