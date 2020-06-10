@@ -18,7 +18,7 @@ class ThanksController < ApplicationController
     thank = Thank.find_by(id: params[:id])
     thank.undo
     flash[:warning] = '習慣の状態を元に戻しました'
-    redirect_back(fallback_location: root_url)
+    redirect_to root_url
   end
 
   private
