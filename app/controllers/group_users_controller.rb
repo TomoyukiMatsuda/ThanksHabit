@@ -3,7 +3,7 @@ class GroupUsersController < ApplicationController
 
   def create
     group_user = GroupUser.create(group_user_params)
-    flash[:success] = '招待保存成功'
+    flash[:success] = "#{group_user.user.name} さんを招待しました"
     redirect_to group_url(group_user.group_id)
   end
 
@@ -13,13 +13,13 @@ class GroupUsersController < ApplicationController
   def permit
     @group_user.permission = true
     @group_user.save
-    flash[:success] = "#{@group_user.group.name}に参加しました"
+    flash[:success] = "「#{@group_user.group.name}」に参加しました"
     redirect_to @group_user.group
   end
 
   def destroy
     @group_user.destroy
-    flash[:primary] = 'グループへの参加を辞退しました'
+    flash[:warning] = "「#{@group_user.group.name}」の招待を辞退しました"
     redirect_to root_url
   end
 
