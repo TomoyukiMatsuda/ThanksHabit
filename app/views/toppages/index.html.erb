@@ -11,11 +11,11 @@
               <% if thank_today(@thanks, user, group) %> <!-- 今日の感謝登録あるかないかで表示内容を変更 !-->
                 <p><%= user.name %>さんに感謝を伝えました <%= link_to '元に戻す', thank_path(@today_thank), method: :delete, class: 'btn btn-secondary btn-md' %></p>
               <% else %>
-                <% if @thank.receiver_id == user.id && @thank.group_id == group.id %> <!-- 操作フォームには既存インスタンスをそのほかには新規インスタンスを渡す !-->
+                <% if @thank.clean_thank || @thank.operation_form_thank(user, group) %>
                   <%= render 'thanks/thank_form', thank: @thank, user: user, group: group %>
                 <% else %>
-                  <% @thank = current_user.thanks.build %>
-                  <%= render 'thanks/thank_form', thank: @thank, user: user, group: group %>
+                  <% @new_thank = current_user.thanks.build %>
+                  <%= render 'thanks/thank_form', thank: @new_thank, user: user, group: group %>
                 <% end %>
               <% end %>
 
