@@ -4,13 +4,18 @@
     <div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
       <ul class="navbar-nav">
         <% if logged_in? %>
-          <% if unpermit_group_users(current_user) %> <!-- 承認していないグループ招待があれば表示 !-->
-            <% unpermit_group_users(current_user).each do |unpermit_group_user| %>
-              <li class="nav-item"><%= link_to "#{unpermit_group_user.group.name}からの招待", invite_group_user_path(unpermit_group_user), class: 'nav-link' %></li>
-            <% end %>
-          <% end %>
           <li class="nav-item"><%= link_to '新規グループ作成', new_group_path, class: 'nav-link' %></li>
           <li class="nav-item"><%= link_to '今日の感謝を登録', root_path, class: 'nav-link' %></li>
+          <% unless unpermit_group_users(current_user) == []  %> <!-- 承認していないグループ招待があれば表示 !-->
+            <li class="nav-item dropdown">
+              <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">グループから招待があります</a>
+              <ul class="dropdown-menu dropdown-menu-right">
+                <% unpermit_group_users(current_user).each do |unpermit_group_user| %>
+                  <li class="dropdown-item"><%= link_to "#{unpermit_group_user.group.name}からの招待", invite_group_user_path(unpermit_group_user) %></li>
+                <% end %>
+              </ul>
+            </li>
+          <% end %>
           <li class="nav-item dropdown">
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><%= current_user.name %></a>
             <ul class="dropdown-menu dropdown-menu-right">
