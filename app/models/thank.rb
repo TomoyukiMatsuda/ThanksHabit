@@ -25,4 +25,14 @@ class Thank < ApplicationRecord
     thank_date = I18n.l self.created_at
     self.destroy if today == thank_date
   end
+
+  # インスタンスがuser_idのみの場合(toppage#indexから呼ばれている)にtrue
+  def clean_thank
+    self.receiver_id == nil && self.group_id == nil
+  end
+
+  # バリデーションエラー時インスタンスの操作フォームから生成されたものであればtrue
+  def operation_form_thank(user, group)
+    self.receiver_id == user.id && self.group_id == group.id
+  end
 end
