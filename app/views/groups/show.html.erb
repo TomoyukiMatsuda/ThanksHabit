@@ -6,7 +6,7 @@
       </div>
 
       <% @users.each do |user| %>
-        <% if permitted_group_user?(user, @group) %>
+        <% if permitted_group_user(user, @group) %>
           <p><%= link_to user.name, user %></p>
         <% else %>
           <p><%= user.name %> さんを招待中</p>

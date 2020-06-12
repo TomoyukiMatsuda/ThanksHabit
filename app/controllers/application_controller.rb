@@ -2,6 +2,7 @@ class ApplicationController < ActionController::Base
   before_action :login_required
 
   include SessionsHelper
+  include GroupUsersHelper
 
   private
   def login_required

@@ -1,12 +1,12 @@
 <% if logged_in? %>
   <h3>"<%= current_user.name %>"さん 1日1回大切な人に感謝を伝えましょう</h3>
   <% @groups.each do |group| %>
-    <% if permitted_group_user?(current_user, group) %> <!--参加済みグループのみを表示!-->
+    <% if permitted_group_user(current_user, group) %> <!--参加済みグループのみを表示!-->
       <div class="card mb-4">
         <h4 class="card-header text-center text-white bg-dark">グループ名: <%= link_to "#{group.name}", group, class: 'text-white' %></h4>
         <div class="card-body">
           <% group.users.each do |user| %>
-            <% if current_user != user && permitted_group_user?(user, group) %> <!-- ログインユーザでない 且つ 参加済みユーザのみを表示 !-->
+            <% if current_user != user && permitted_group_user(user, group) %> <!-- ログインユーザでない 且つ 参加済みユーザのみを表示 !-->
               
               <% if thank_today(@thanks, user, group) %> <!-- 今日の感謝登録あるかないかで表示内容を変更 !-->
                 <p><%= user.name %>さんに感謝を伝えました <%= link_to '元に戻す', thank_path(@today_thank), method: :delete, class: 'btn btn-secondary btn-md' %></p>

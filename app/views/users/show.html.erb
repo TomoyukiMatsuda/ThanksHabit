@@ -7,7 +7,7 @@
     </div>
 
     <% @groups.each do |group| %>
-      <% if permitted_group_user?(@user, group) %>
+      <% if permitted_group_user(@user, group) %>
         <p><%= link_to group.name, group %></p>
       <% else %>
         <p>「<%= group.name %>」 から招待されています</p>

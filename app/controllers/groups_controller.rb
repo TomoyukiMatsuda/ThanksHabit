@@ -1,5 +1,5 @@
 class GroupsController < ApplicationController
-  before_action :set_group, only: [:show, :edit, :update, :search_user]
+  before_action :correct_user, only: [:show, :edit, :update, :search_user]
 
   def new
     @group = Group.new
@@ -48,7 +48,12 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name)
   end
 
-  def set_group
+  # グループ参加済みユーザのみに限定
+  def correct_user
     @group = Group.find_by(id: params[:id])
+    unless permitted_group_user(current_user, @group)
+      flash[:danger] = 'エラー'
+      redirect_to root_url
+    end
   end
 end
