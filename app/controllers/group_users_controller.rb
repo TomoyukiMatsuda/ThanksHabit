@@ -1,5 +1,5 @@
 class GroupUsersController < ApplicationController
-  before_action :set_group_user, except: :create
+  before_action :correct_user, except: :create
 
   def create
     group_user = GroupUser.create(group_user_params)
@@ -29,7 +29,11 @@ class GroupUsersController < ApplicationController
     params.require(:group_user).permit(:user_id, :group_id).merge(permission: false)
   end
 
-  def set_group_user
-    @group_user = GroupUser.find_by(id: params[:id])
+  def correct_user
+    @group_user = current_user.group_users.find_by(id: params[:id])
+    unless @group_user
+      flash[:danger] = 'エラー'
+      redirect_to root_url
+    end
   end
 end
