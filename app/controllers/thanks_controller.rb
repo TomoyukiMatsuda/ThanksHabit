@@ -1,4 +1,5 @@
 class ThanksController < ApplicationController
+  before_action :correct_user, only: :destroy
 
   def create
     @thank = current_user.thanks.build(thank_params)
@@ -15,8 +16,7 @@ class ThanksController < ApplicationController
   end
 
   def destroy
-    thank = Thank.find_by(id: params[:id])
-    thank.undo
+    @thank.undo
     flash[:warning] = '状態を元に戻しました'
     redirect_to root_url
   end
@@ -25,5 +25,13 @@ class ThanksController < ApplicationController
 
   def thank_params
     params.require(:thank).permit(:content, :receiver_id, :group_id)
+  end
+
+  def correct_user
+    @thank = current_user.thanks.find_by(id: params[:id])
+    unless @thank
+      flash[:danger] = 'エラー'
+      redirect_to root_url
+    end
   end
 end
