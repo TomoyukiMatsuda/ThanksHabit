@@ -7,9 +7,9 @@
 
       <% @users.each do |user| %>
         <% if permitted_group_user(user, @group) %>
-          <p><%= link_to user.name, user %></p>
+          <p><%= user.name %> さん</p>
         <% else %>
-          <p><%= user.name %> さんを招待中</p>
+          <p><%= user.name %> さん(招待中)</p>
         <% end %>
       <% end %>
 
