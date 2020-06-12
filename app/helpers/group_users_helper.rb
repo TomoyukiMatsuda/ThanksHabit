@@ -4,9 +4,9 @@ module GroupUsersHelper
     @unpermit_group_users = user.group_users.where(permission: false)
   end
 
-  # group_userインスタンスのpermission:true or false を判定
-  def permitted_group_user?(user, group)
+  # ユーザが参加済みのグループかどうか確認、返り値はtrue/false/nilの3通り
+  def permitted_group_user(user, group)
     group_user = user.group_users.find_by(group_id: group.id)
-    group_user.permission # permissionの値を返す(true or false)
+    group_user.permission unless group_user == nil
   end
 end
