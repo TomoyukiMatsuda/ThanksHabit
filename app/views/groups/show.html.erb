@@ -23,7 +23,7 @@
           <th>感謝した人</th>
           <th>感謝された人</th>
           <th>感謝の内容</th>
-          <th>日付</th>
+          <th><%= sort_link  @q, :created_at, '日付(ソート)' %></th>
         </tr>
       </thead>
       <% @thanks.each do |thank| %>

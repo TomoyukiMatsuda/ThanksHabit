@@ -20,7 +20,8 @@ class GroupsController < ApplicationController
 
   def show
     @users = @group.users.order(id: :asc)
-    @thanks = @group.thanks.order(id: :desc)
+    @q = @group.thanks.ransack(params[:q])
+    @thanks = @q.result(distinct: true).order(id: :desc)
   end
 
   def edit
