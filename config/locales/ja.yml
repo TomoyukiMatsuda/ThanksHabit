@@ -58,7 +58,7 @@ ja:
       short: "%m/%d"
       start_day: "%Y-%m-%d %H:%M:%S"
     month_names:
-    - 
+    -
     - 1月
     - 2月
     - 3月
@@ -221,3 +221,10 @@ ja:
       short: "%m/%d %H:%M"
       db: "%Y-%m-%d %H:%M:%S"
     pm: 午後
+  views:
+    pagination:
+      first: '最初'
+      last: '最後'
+      previous: '前'
+      next: '次'
+      truncate: '...'
