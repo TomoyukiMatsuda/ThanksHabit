@@ -1,22 +1,51 @@
 <h1 class="text-center"><%= @user.name %>さんのページ</h1>
 
-<div class="mt-4">
-  <div class="card" style="width: 25rem;">
-    <div class="card-body">
-      <h4 class="card-title text-center"><%= @user.name %> さんのグループ</h4>
-    </div>
+<div class="row mt-4">
 
-    <% @groups.each do |group| %>
-      <% if permitted_group_user(@user, group) %>
-        <p><%= link_to group.name, group %></p>
-      <% else %>
-        <p>「<%= group.name %>」 から招待されています</p>
+  <div class="col-sm-4">
+    <div class="card" style="width: 24rem;">
+      <div class="card-body">
+        <h4 class="card-title text-center"><%= @user.name %> さんのグループ</h4>
+      </div>
+
+      <% @groups.each do |group| %>
+        <% if permitted_group_user(@user, group) %>
+          <p><%= link_to group.name, group %></p>
+        <% else %>
+          <p>「<%= group.name %>」 から招待されています</p>
+        <% end %>
       <% end %>
+
+    </div>
+    <!-- ログインユーザをの場合のみ表示 !-->
+    <%= link_to 'アカウント情報編集', edit_user_path(current_user) %>
+  </div>
+
+  <div class="col-sm-7 offset-sm-1">
+    <%= search_form_for @q, url: user_path(@user) do |f| %>
+
+      <div class="form-group d-flex align-items-center row">
+        <%= f.label :content_cont, '感謝の内容', class: 'col-sm-2' %>
+        <%= f.search_field :content_cont, class: 'form-control col-sm-9', placeholder: '検索キーワードを入力してください' %>
+      </div>
+
+      <div class="form-group d-flex align-items-center row">
+        <%= f.label :created_at, '期間', class: 'col-sm-2' %>
+        <%= f.date_field :created_at_lteq, class: 'form-control col-sm-4 ml-2 mr-1' %>以前
+        <%= f.date_field :created_at_gteq, class: 'form-control col-sm-4 ml-2 mr-1' %>以降
+      </div>
+
+      <div class="text-right">
+        <%= f.submit class: 'btn btn-primary' %>
+      </div>
     <% end %>
 
+    <div class="text-right mt-2">
+      <%= link_to '全件表示に戻す', user_path(@user), class: 'btn btn-outline-primary' %>
+    </div>
+
   </div>
-  <!-- ログインユーザをの場合のみ表示 !-->
-  <%= link_to 'アカウント情報編集', edit_user_path(current_user) %>
+
 </div>
 
 <table class="table mt-4">
