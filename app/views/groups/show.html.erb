@@ -25,24 +25,4 @@
   </div>
 
 </div>
-
-    <table class="table mt-4">
-      <thead class="bg-secondary text-white">
-        <tr>
-          <th>感謝した人</th>
-          <th>感謝された人</th>
-          <th>感謝の内容</th>
-          <th><%= sort_link  @q, :created_at, '日付(ソート)' %></th>
-        </tr>
-      </thead>
-      <% @thanks.each do |thank| %>
-        <tbody>
-          <tr>
-            <td><%= thank.user.name %></td>
-            <td><%= thank.receiver.name %></td>
-            <td><%= thank.content %></td>
-            <td><%= l thank.created_at %></td>
-          </tr>
-        </tbody>
-      <% end %>
-    </table>
+<%= render 'thanks/index', user: current_user, thanks: @thanks, q: @q %>
