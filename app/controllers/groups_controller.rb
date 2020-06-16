@@ -20,7 +20,7 @@ class GroupsController < ApplicationController
 
   def show
     @users = @group.users.order(id: :asc)
-    @q = @group.thanks.ransack(params[:q])
+    @q = @group.thanks.ransack(params[:q]) # search_form_for用
     @thanks = @q.result(distinct: true).order(id: :desc).page(params[:page]).per(15)
   end
 
@@ -38,9 +38,13 @@ class GroupsController < ApplicationController
   end
 
   def search_user
-    # ログインユーザ以外のユーザを取得
-    @users = User.order(id: :desc).where.not(id: current_user.id).page(params[:page]).per(10)
     @group_user = GroupUser.new # form_with用
+    @q = User.where.not(id: current_user.id).ransack(params[:q]) # search_form_for用
+
+    if params[:q] != nil && params[:q][:name_cont].presence # 検索をした場合且つ、空文字での検索ではない場合のみuserインスタンスを取得する
+      users = @q.result(distinct: true).order(id: :desc).page(params[:page]).per(10)
+      @invitable_users = users.reject { |user| user.groups.include?(@group) } # 招待可能ユーザに限定した配列にする
+    end
   end
 
   private
