@@ -1,4 +1,17 @@
-<h3>"<%= @group.name %>"にユーザを招待する</h3>
+<h3>ユーザを探して「<%= @group.name %>」に招待しよう</h3>
+
+<%= search_form_for @q, url: search_user_group_path(@group) do |f| %>
+    <%= f.label :name_cont, 'ユーザ名' %>
+
+  <div class="form-group d-flex align-items-center row">
+    <%= f.search_field :name_cont, class: 'form-control col-sm-9', placeholder: '検索キーワードを入力' %>
+    <%= f.submit class: 'btn btn-outline-primary col-sm-2 offset-sm-1' %>
+  </div>
+<% end %>
+<div class="text-right mt-2">
+  <%= link_to '検索結果をクリア', search_user_group_path(@group) %>
+</div>
+
 <table class="table">
   <thead>
     <tr>
@@ -7,20 +20,24 @@
     </tr>
   </thead>
   <tbody>
-    <% @users.each do |user| %>
-      <!-- このグループに所属していない且つ招待されていない場合のみ表示 !-->
-      <% unless user.groups.include?(@group) %>
+    <% if @invitable_users == nil %> <!-- 検索していない状態または、空文字検索をかけた場合 -->
+      <p>グループに招待したいユーザを検索してください</p>
+    <% elsif @invitable_users == [] %> <!-- 検索の結果該当ユーザなし -->
+      <p>キーワードに関連する招待可能なユーザが見つかりませんでした。</p>
+    <% else %> <!-- 検索に該当するユーザあり -->
+      <% @invitable_users.each do |invitable_user| %>
         <tr>
-          <td><%= user.name %> さん</td>
+          <td><%= invitable_user.name %> さん</td>
           <td>
             <%= form_with(model: @group_user, local: true) do |f| %>
-              <%= f.hidden_field :user_id, value: user.id %>
+              <%= f.hidden_field :user_id, value: invitable_user.id %>
               <%= f.hidden_field :group_id, value: @group.id %>
-              <%= f.submit "#{user.name}さんを招待", data: { confirm: "#{user.name}さんを招待しますか？" }, class: 'btn btn-primary btn-block' %>
+              <%= f.submit "#{invitable_user.name}さんを招待", data: { confirm: "#{invitable_user.name}さんを招待しますか？" }, class: 'btn btn-primary btn-block' %>
             <% end %>
           </td>
         </tr>
       <% end %>
     <% end %>
+
   </tbody>
 </table>
