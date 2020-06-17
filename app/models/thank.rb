@@ -4,6 +4,16 @@ class Thank < ApplicationRecord
   belongs_to :receiver, class_name: 'User'
   belongs_to :group
 
+  # ransackで検索可能なカラムを制限
+  def self.ransackable_attributes(auth_object = nil)
+    %w[content created_at]
+  end
+
+  # ransackで検索条件に意図しない関連を含めないように制限
+  def self.ransackable_associations(auth_object = nil)
+    []
+  end
+
   # thank登録
   def tell_thank(current_user, receiver_id, group_id)
     thanks_to_receiver = current_user.thanks.where(receiver_id: receiver_id, group_id: group_id) # 該当group内でthankを受けたuserのthanksに絞り込み
