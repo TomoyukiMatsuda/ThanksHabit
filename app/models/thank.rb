@@ -1,5 +1,5 @@
 class Thank < ApplicationRecord
-  validates :content, presence: true, length: { maximum: 150 } 
+  validates :content, presence: true, length: { maximum: 150 }
   belongs_to :user
   belongs_to :receiver, class_name: 'User'
   belongs_to :group
@@ -14,9 +14,10 @@ class Thank < ApplicationRecord
     []
   end
 
-  # thank登録
+  # 今日の感謝登録がない且つ、感謝する人とされる人が異なることを確認してから登録
   def tell_thank(current_user, receiver_id, group_id)
-    thanks_to_receiver = current_user.thanks.where(receiver_id: receiver_id, group_id: group_id) # 該当group内でthankを受けたuserのthanksに絞り込み
+    # 該当group内でthankを受けたuserのthanksに絞り込み
+    thanks_to_receiver = current_user.thanks.where(receiver_id: receiver_id, group_id: group_id)
     thank_days = []
     thanks_to_receiver.each do |thank|
       thank_date = I18n.l thank.created_at
@@ -29,20 +30,10 @@ class Thank < ApplicationRecord
     end
   end
 
-  # その日のデータか確認し、thank登録を元に戻す(削除する)
+  # その日のデータか確認できれば、thank登録を元に戻す(削除する)
   def undo
     today = I18n.l Date.current
     thank_date = I18n.l self.created_at
     self.destroy if today == thank_date
-  end
-
-  # インスタンスがuser_idのみの場合(toppage#indexから呼ばれている)にtrue
-  def clean_thank
-    self.receiver_id == nil && self.group_id == nil
-  end
-
-  # バリデーションエラー時インスタンスの操作フォームから生成されたものであればtrue
-  def operation_form_thank(user, group)
-    self.receiver_id == user.id && self.group_id == group.id
   end
 end
