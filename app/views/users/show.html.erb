@@ -1,13 +1,11 @@
 <h1 class="text-center"><%= @user.name %>さんのページ</h1>
 
 <div class="row mt-4">
-
-  <div class="col-sm-4">
-    <div class="card" style="width: 24rem;">
+  <aside class="col-sm-4">
+    <div class="card">
       <div class="card-body">
         <h4 class="card-title text-center"><%= @user.name %> さんのグループ</h4>
       </div>
-
       <% @groups.each do |group| %>
         <% if permitted_group_user(@user, group) %>
           <p><%= link_to group.name, group %></p>
@@ -15,13 +13,11 @@
           <p>「<%= group.name %>」 から招待されています</p>
         <% end %>
       <% end %>
-
     </div>
-    <!-- ログインユーザをの場合のみ表示 !-->
     <%= link_to 'アカウント情報編集', edit_user_path(current_user) %>
-  </div>
+  </aside>
 
-  <div class="col-sm-7 offset-sm-1">
+  <div class="col-sm-8">
     <%= render 'thanks/search_form', q: @q, url: user_path(@user) %>
   </div>
 
