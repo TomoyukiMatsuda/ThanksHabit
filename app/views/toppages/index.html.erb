@@ -14,7 +14,7 @@
                   <div class="col-sm-2"><%= link_to '元に戻す', thank_path(@today_thank), method: :delete, class: 'form-control btn btn-secondary btn-sm' %></div>
                  </div>
               <% else %>
-                <% if @thank.clean_thank || @thank.operation_form_thank(user, group) %>
+                <% if clean_thank(@thank) || operation_form_thank(@thank, user, group) %>
                   <%= render 'thanks/thank_form', thank: @thank, user: user, group: group %>
                 <% else %>
                   <% @new_thank = current_user.thanks.build %>

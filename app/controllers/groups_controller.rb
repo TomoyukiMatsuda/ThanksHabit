@@ -53,7 +53,7 @@ class GroupsController < ApplicationController
     params.require(:group).permit(:name)
   end
 
-  # グループ参加済みユーザのみに限定
+  # グループ参加済みユーザのみに操作を限定
   def correct_user
     @group = Group.find_by(id: params[:id])
     unless permitted_group_user(current_user, @group)

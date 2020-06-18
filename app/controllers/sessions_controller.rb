@@ -21,6 +21,7 @@ class SessionsController < ApplicationController
 
   private
 
+  # ログイン時にsessionにユーザのidを格納する
   def login(email, password)
     @user = User.find_by(email: email)
     if @user && @user.authenticate(password)
