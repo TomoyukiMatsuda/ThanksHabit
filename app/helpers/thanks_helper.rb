@@ -2,16 +2,12 @@ module ThanksHelper
 
   # group内でuserに対してその日のthankがあるかどうか確認し、あればそのインスタンスを返す
   def thank_today(thanks, user, group)
-    # 該当group内でthankを受けたuserのthanksに絞り込み
+    # 該当group内で感謝を受けたuserのthanksに限定し取得。そのthankのcreated_atを日本日付形式にして新たな配列を作成。
     thanks_to_receiver = thanks.where(receiver_id: user.id, group_id: group.id)
-    thank_days = []
-    thanks_to_receiver.each do |thank|
-      thank_date = I18n.l thank.created_at
-      thank_days.push(thank_date)
-    end
+    thank_days = thanks_to_receiver.map { |thank| thank_date = I18n.l thank.created_at }
+
     today = I18n.l Date.current
-
-
+    binding.pry
     if thank_days.include?(today)
       @today_thank = thanks_to_receiver.last
     else
