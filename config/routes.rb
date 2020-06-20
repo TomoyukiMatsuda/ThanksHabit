@@ -17,7 +17,7 @@ Rails.application.routes.draw do
 
   resources :group_users, only: [:create, :destroy] do
     member do
-      get :invite
+      get :check
       put :permit
     end
   end

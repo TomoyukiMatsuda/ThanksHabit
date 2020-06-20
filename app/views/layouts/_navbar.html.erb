@@ -15,7 +15,7 @@
               <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">グループ招待があります</a>
               <ul class="dropdown-menu dropdown-menu-right">
                 <% unpermit_group_users(current_user).each do |unpermit_group_user| %>
-                  <li class="dropdown-item"><%= link_to "「#{unpermit_group_user.group.name}」招待", invite_group_user_path(unpermit_group_user) %></li>
+                  <li class="dropdown-item"><%= link_to "「#{unpermit_group_user.group.name}」招待", check_group_user_path(unpermit_group_user) %></li>
                 <% end %>
               </ul>
             </li>
