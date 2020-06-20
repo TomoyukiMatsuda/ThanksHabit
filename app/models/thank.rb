@@ -14,17 +14,13 @@ class Thank < ApplicationRecord
     []
   end
 
-  # 今日の感謝登録がない且つ、感謝する人とされる人が異なることを確認してから登録
+  # その日の感謝登録がない且つ、感謝する人とされる人が異なることを確認してから登録
   def tell_thank(current_user, receiver_id, group_id)
-    # 該当group内でthankを受けたuserのthanksに絞り込み
+    # 該当group内で感謝を受けたuserのthanksに限定し取得。そのthankのcreated_atを日本日付形式にして新たな配列を作成。
     thanks_to_receiver = current_user.thanks.where(receiver_id: receiver_id, group_id: group_id)
-    thank_days = []
-    thanks_to_receiver.each do |thank|
-      thank_date = I18n.l thank.created_at
-      thank_days.push(thank_date)
-    end
-    today = I18n.l Date.current
+    thank_days = thanks_to_receiver.map { |thank| thank_date = I18n.l thank.created_at }
 
+    today = I18n.l Date.current
     if !thank_days.include?(today) && self.user_id != receiver_id
       self.save
     end
