@@ -7,7 +7,7 @@ class GroupUsersController < ApplicationController
     redirect_to group_url(group_user.group_id)
   end
 
-  def invite
+  def check
   end
 
   def permit
