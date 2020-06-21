@@ -7,7 +7,6 @@ module ThanksHelper
     thank_days = thanks_to_receiver.map { |thank| thank_date = I18n.l thank.created_at }
 
     today = I18n.l Date.current
-    binding.pry
     if thank_days.include?(today)
       @today_thank = thanks_to_receiver.last
     else
