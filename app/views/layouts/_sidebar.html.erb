@@ -1,0 +1,18 @@
+<aside class="sidebar">
+  <div class="sidebar__header">
+    <%= link_to 'ThanksHabit', root_path %>
+  </div>
+  <nav class="sidebar__nav">
+    <ul class="sidebar__nav--link-list">
+      <li><%= link_to '感謝を送る', root_path %></li>
+      <li><%= link_to 'グループを作る', new_group_path %></li>
+    </ul>
+  </nav>
+  <div class="sidebar__footer">
+    <div class="sidebar__footer--current-user"><%= current_user.name %> さん</div>
+    <ul class="sidebar__footer--link">
+      <li class="sidebar__footer--link-list"><%= link_to 'マイページ', current_user %></li>
+      <li class="sidebar__footer--link-list"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+    </ul>
+  </div>
+</aside>

@@ -12,7 +12,7 @@
                 <div class="row mt-4">
                   <div class="col-sm-10 text-center"><h5><%= user.name %> さんに感謝を伝えました</h5></div>
                   <div class="col-sm-2"><%= link_to '元に戻す', thank_path(@today_thank), method: :delete, class: 'form-control btn btn-secondary btn-sm' %></div>
-                 </div>
+                </div>
               <% else %>
                 <% if clean_thank(@thank) || operation_form_thank(@thank, user, group) %>
                   <%= render 'thanks/thank_form', thank: @thank, user: user, group: group %>
@@ -28,7 +28,7 @@
       </div>
     <% end %>
   <% end %>
-<%= paginate @groups %>
+  <%= paginate @groups %>
 
 <% else %>
   <h3 class="text-center">ThanksHabitは</h3>
