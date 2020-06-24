@@ -15,13 +15,30 @@
  */
 
 
+ .header-title {
+  display: none;
+ }
+
  .layout {
    display: flex;
    min-height: 100vh;
 
+
    .main {
      flex: 1;
-     max-width: 800px;
+     max-width: 900px;
      margin: 0 auto;
    }
+  }
+
+  @media screen and (max-width: 900px) {
+
+    .header-title {
+      display: block;
+      text-align: center;
+      background-color: #4d648d;
+    }
+    .main {
+      padding-top: 50px;
+    }
   }

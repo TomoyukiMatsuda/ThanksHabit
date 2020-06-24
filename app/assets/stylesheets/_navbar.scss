@@ -1,0 +1,98 @@
+$baseBlue: #0c8dd3;
+
+.sidebar {
+  width: 15%;
+  min-width: 250px;
+  max-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: $baseBlue;
+  font-size: 20px;
+  text-align: center;
+
+  a {
+    color: #fff;
+  }
+
+  &__nav {
+
+    &--link-list {
+
+    }
+  }
+
+  &__footer {
+    margin-top: auto;
+    margin-bottom: 5px;
+    height: 100px;
+
+    &--current-user {
+      color: #fff;
+    }
+
+    &--link-list {
+      color: #fff;
+    }
+  }
+}
+
+// ハンバーガーメニュー begin
+.header,
+.sidebar__close-icon {
+  display: none;
+}
+input[type="checkbox"] {
+  position: absolute;
+  left: -50vw;
+}
+// ハンバーガーメニュー end
+
+
+@media screen and (max-width: 900px) {
+
+  // ヘッダーは幅900px以下の場合のみ表示
+  .header {
+    display: block;
+    position: fixed;
+    z-index: 1;
+    background-color: $baseBlue;
+    width: 100%;
+    font-size: 30px;
+    text-align: center;
+    
+    &__open-icon {
+      position: absolute;
+      left: 10px;
+    }
+
+    &__title, a {
+      color: #fff;
+      text-align: center;
+    }
+  }
+
+  .sidebar {
+    position: absolute;
+    z-index: 1;
+    left: -250px;
+    height: 100%;
+    transition: all 0.2s;
+
+    &__close-icon {
+      display: block;
+      text-align: left;
+      padding: 10px;
+    }
+  }
+
+  input[type="checkbox"]:checked ~ .sidebar {
+    left: 0;
+  }
+  input[type="checkbox"]:checked ~ .back {
+    position: absolute;
+    z-index: 1;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+  }
+}

@@ -1,5 +1,4 @@
 <% if logged_in? %>
-  <h3>"<%= current_user.name %>"さん 1日1回大切な人に感謝を伝えましょう</h3>
   <% @groups.each do |group| %>
     <% if permitted_group_user(current_user, group) %> <!--参加済みグループのみを表示!-->
       <div class="card mb-4">
