@@ -1,0 +1,74 @@
+$cFace: #7ecbff;
+
+
+.thank-card {
+  margin: 0 auto 15px;
+  width: 80%;
+  min-width: 200px;
+  min-height: 150px;
+  border-radius: 15px;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
+  background-color: rgb(241, 248, 255);
+
+  &__upper-info {
+    display: flex;
+    height: 55%;
+    width: 98%;
+    margin: 0 auto;
+    text-align: center;
+    align-items: center;
+    border-bottom: 1px solid rgb(207, 207, 207);
+
+    &--send-user {
+      flex: 2;
+
+      &--icon {
+        font-size: 48px;
+        color: $cFace;
+      }
+
+      &--name {
+        font-size: 15px;
+      }
+    }
+
+    &--send-icon {
+      flex: 1;
+      color: #fa4993;
+      font-size: 38px;
+    }
+    
+    &--reciever {
+      flex: 2;
+
+      &--icon {
+        font-size: 48px;
+        color: $cFace;
+      }
+
+      &--name {
+        font-size: 15px;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    height: 45%;
+
+    &--messeage {
+      flex: 5;
+      text-align: center;
+      margin-top: 18px;
+      font-size: 18px;
+    }
+
+    &--date {
+      flex: 1;
+      color: #918f8f;
+      text-align: end;
+      padding: 0 18px 0 10px;
+    }
+  }
+}
