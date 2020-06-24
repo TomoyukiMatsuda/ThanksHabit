@@ -1,12 +1,12 @@
 
-.users-container {
+.groups-container {
   display: flex;
   min-height: 100vh;
 
   &__main-content {
     max-width: 850px;
     flex: 4;
-    margin: 50px auto;
+    margin: 20px auto;
   }
 
   &__right-content {
