@@ -1,7 +1,12 @@
-<h1 class="text-center">"<%= @group.name %>"みんなの感謝</h1>
+<div class="groups-container">
 
-<div class="row mt-4">
-  <aside class="col-sm-4">
+  <div class="groups-container__main-content">
+    <%= render 'thanks/index', user: current_user, thanks: @thanks, q: @q %>
+  </div>
+
+  <div class="groups-container__right-content">
+    <%= render 'thanks/search_form', q: @q, url: group_path(@group) %>
+
     <div class="card">
       <div class="card-body">
         <h4 class="card-title text-center">"<%= @group.name %>"</h4>
@@ -16,11 +21,6 @@
     </div>
     <%= link_to 'グループにユーザを追加', search_user_group_path(@group) %><br>
     <%= link_to 'グループ名変更', edit_group_path(@group) %>
-  </aside>
-
-  <div class="col-sm-8">
-    <%= render 'thanks/search_form', q: @q, url: group_path(@group) %>
   </div>
 
 </div>
-<%= render 'thanks/index', user: current_user, thanks: @thanks, q: @q %>

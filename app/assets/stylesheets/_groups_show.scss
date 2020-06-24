@@ -1,0 +1,19 @@
+
+
+.groups-container {
+  display: flex;
+
+  &__main-content {
+    max-width: 850px;
+    flex: 4;
+    margin: 50px auto;
+  }
+
+  &__right-content {
+    flex: 1;
+    max-width: 250px;
+    margin-right: 8px;
+    padding-top: 50px;
+    border: solid 1px #e4e1e1;
+  }
+}
