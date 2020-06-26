@@ -1,3 +1,5 @@
+@import "setup";
+
 .thank-search-container {
   margin: 25px auto;
   width: 98%;
@@ -8,7 +10,7 @@
     min-height: 50px;
     display: flex;
     justify-content: center;
-    background-color: rgb(157, 235, 255);
+    background-color: $c-light-blue;
     align-items: center;
     border-radius: 6px 6px 0 0;
     font-size: 18px;
@@ -64,12 +66,17 @@
     width: 100%;
     font-size: 28px;
     padding: 0;
-    background-color: #80c0fc;
-    border-radius: 6px
+    border: 1px solid $c-deep-blue;
+    border-radius: 6px;
+
+    & btn {
+      color: $c-deep-blue;
+    }
   }
 
-  &__undo-link {
+  &__undo-link a {
     display: flex;
     justify-content: flex-end;
+    color: $c-deep-blue;
   }
 }

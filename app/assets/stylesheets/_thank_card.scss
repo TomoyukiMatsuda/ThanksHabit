@@ -7,7 +7,7 @@
   min-height: 150px;
   border-radius: 15px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
-  background-color: #f1f8ff;
+  background-color: $c-light-blue2;
 
   &__upper-info {
     display: flex;
@@ -33,7 +33,7 @@
 
     &--send-icon {
       flex: 1;
-      color: #fa4993;
+      color: $c-pink;
       font-size: 38px;
     }
     
