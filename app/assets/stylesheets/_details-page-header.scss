@@ -1,13 +1,18 @@
+@import "setup";
+
 .details-page-header {
+  color: $c-deep-gray;
   font-size: 35px;
   text-align: center;
   
   &__face-icon {
-    color: #7ecbff;
+    font-size: 50px;
+    color: $c-blue;
   }
 
   &__heart-icon {
-    color: #fa4993;
+    font-size: 50px;
+    color: $c-pink;
   }
 }
 
