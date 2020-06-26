@@ -7,20 +7,31 @@
   <div class="groups-container__right-content">
     <%= render 'thanks/search_form', q: @q, url: group_path(@group) %>
 
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title text-center">"<%= @group.name %>"</h4>
+    <div class="join-user-container">
+      <div class="join-user-container__head">
+        <%= @group.name %>
       </div>
-      <% @users.each do |user| %>
-        <% if permitted_group_user(user, @group) %>
-          <p><%= user.name %> さん</p>
-        <% else %>
-          <p><%= user.name %> さん(招待中)</p>
+      <div class="join-user-container__main">
+        <% @users.each do |user| %>
+          <div class="join-user-container__main--user-name">
+            <% if permitted_group_user(user, @group) %>
+                <%= user.name %> さん
+            <% else %>
+                <%= user.name %> さん(招待中)
+            <% end %>
+          </div>
         <% end %>
-      <% end %>
+      </div>
+      <div class="join-user-container__footer">
+        <div class="join-user-container__footer--add-user-link">
+          <%= link_to 'ユーザを招待', search_user_group_path(@group) %>
+        </div>
+        <div class="join-user-container__footer--edit-group-link">
+          <%= link_to 'グループ名を変更', edit_group_path(@group) %>
+        </div>
+      </div>
+
     </div>
-    <%= link_to 'グループにユーザを追加', search_user_group_path(@group) %><br>
-    <%= link_to 'グループ名変更', edit_group_path(@group) %>
   </div>
 
 </div>

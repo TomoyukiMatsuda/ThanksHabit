@@ -3,17 +3,17 @@
 .thank-search-container {
   margin: 25px auto;
   width: 98%;
-  border: 1px solid rgb(218, 216, 216);
-  border-radius: 6px;
+  border: 1px solid $c-light-gray;
+  border-radius: 10px;
 
   &__head {
     min-height: 50px;
     display: flex;
     justify-content: center;
-    background-color: $c-light-blue;
+    background-color: $c-light-blue2;
     align-items: center;
-    border-radius: 6px 6px 0 0;
-    font-size: 18px;
+    border-radius: 9px 9px 0 0;
+    font-size: 20px;
     margin-bottom: 15px;
   }
 }

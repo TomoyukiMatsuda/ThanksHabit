@@ -6,19 +6,20 @@
 
   <div class="users-container__right-content">
     <%= render 'thanks/search_form', q: @q, url: user_path(@user) %>
-    <div class="card">
-      <div class="card-body">
-        <h4 class="card-title text-center"><%= @user.name %> さんのグループ</h4>
-      </div>
-      <% @groups.each do |group| %>
-        <% if permitted_group_user(@user, group) %>
-          <p><%= link_to group.name, group %></p>
-        <% else %>
-          <p>「<%= group.name %>」 から招待されています</p>
-        <% end %>
-      <% end %>
-    </div>
-    <%= link_to 'アカウント情報編集', edit_user_path(current_user) %>
-  </div>
 
+    <div class="join-group-container">
+      <div class="join-group-container__head">
+        参加グループ
+      </div>
+      <div class="join-group-container__main">
+        <% @groups.each do |group| %>
+          <% if permitted_group_user(@user, group) %>
+            <div class="join-group-container__main--group-link">
+              <%= link_to group.name, group %>
+            </div>
+          <% end %>
+        <% end %>
+      </div>
+    </div>
+  </div>
 </div>

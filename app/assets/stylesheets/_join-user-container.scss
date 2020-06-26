@@ -1,0 +1,44 @@
+@import "setup";
+
+.join-user-container {
+  margin: 10px auto;
+  width: 98%;
+  border: 1px solid $c-light-gray;
+  border-radius: 10px;
+
+  &__head {
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: $c-light-blue2;
+    align-items: center;
+    border-radius: 9px 9px 0 0;
+    font-size: 20px;
+  }
+
+  &__main {
+    margin: 5px auto;
+    text-align: center;
+    font-size: 18px;
+
+    &--user-name {
+      & a{
+        color: $c-deep-blue;
+      }
+    }
+  }
+
+  &__footer {
+    margin: 0 auto;
+    text-align: center;
+    font-size: 18px;
+    border-radius: 0 0 9px 9px;
+    background-color: $c-light-blue2;
+    padding: 5px 0;
+
+    &--add-user-link a,
+    &--edit-group-link a {
+      color: $c-deep-blue;
+    }
+  }
+}
