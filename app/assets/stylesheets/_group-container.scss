@@ -1,9 +1,10 @@
+@import "setup";
+
 .group-container {
   margin: 30px auto;
   width: 96%;
   max-width: 850px;
   border-radius: 15px;
-  background-color: #f1f8ff;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
 }
 
@@ -11,14 +12,14 @@
   min-height: 50px;
   display: flex;
   justify-content: center;
-  background-color: rgb(157, 235, 255);
+  background-color: $c-deep-blue;
   align-items: center;
   border-radius: 10px 10px 0 0;
   font-size: 25px;
   margin-bottom: 15px;
 
   & a {
-    color: black;
+    color: #fff;
   }
 }
 
@@ -36,6 +37,13 @@
 
     &--label {
       font-size: 20px;
+      color: $c-deep-gray;
+
+      & .fa-hand-point-right,
+      & .fa-heart {
+        font-size: 32px;
+        color: $c-pink;
+      }
     }
     
     &--input {
@@ -56,7 +64,8 @@
       font-size: 24px;
       margin-left: 2px;
       padding: 0;
-      background-color: pink;
+      color: #fff;
+      background-color: $c-pink;
       border-radius: 5px
     }
   }
@@ -76,6 +85,14 @@
     flex: 6;
     max-width: 550px;
     font-size: 20px;
+    color: $c-deep-gray;
+
+    & .fa-hand-point-right,
+    & .fa-heart,
+    & .fa-laugh-squint {
+      font-size: 32px;
+      color: $c-pink;
+    }
   }
 
   &__undo-btn {
@@ -89,7 +106,8 @@
       font-size: 24px;
       margin-left: 2px;
       padding: 0;
-      background-color: #ee1a1a;
+      color: #fff;
+      background-color: $c-gray;
       border-radius: 5px
     }
   }

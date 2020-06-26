@@ -1,5 +1,4 @@
-$cFace: #7ecbff;
-
+@import "setup";
 
 .thank-card {
   margin: 0 auto 15px;
@@ -24,7 +23,7 @@ $cFace: #7ecbff;
 
       &--icon {
         font-size: 48px;
-        color: $cFace;
+        color: $c-blue;
       }
 
       &--name {
@@ -43,7 +42,7 @@ $cFace: #7ecbff;
 
       &--icon {
         font-size: 48px;
-        color: $cFace;
+        color: $c-blue;
       }
 
       &--name {
