@@ -1,4 +1,4 @@
-$baseBlue: #2ba7fa;
+@import "setup";
 
 // サイドバーは900px以下でのみ表示
 .sidebar {
@@ -10,7 +10,7 @@ $baseBlue: #2ba7fa;
   display: flex;
   flex-direction: column;
   z-index: 1;
-  background-color: $baseBlue;
+  background-color: $c-deep-blue;
   font-size: 24px;
   text-align: center;
   transition: all 0.2s;
@@ -48,7 +48,7 @@ $baseBlue: #2ba7fa;
   height: 60px;
   position: fixed;
   z-index: 1;
-  background-color: $baseBlue;
+  background-color: $c-deep-blue;
 
   &__title {
     margin-left: 10px;
@@ -78,6 +78,7 @@ $baseBlue: #2ba7fa;
 .header__open-icon,
 .sidebar__close-icon {
   display: none;
+  color: #fff;
 }
 input[type="checkbox"] {
   position: absolute;
@@ -87,7 +88,7 @@ input[type="checkbox"] {
 
 // ドロップダウンリンク begin
 .dropdown-item a {
-  color: #276afc;
+  color: $c-deep-gray;
 }
 // ドロップダウンリンク end
 
