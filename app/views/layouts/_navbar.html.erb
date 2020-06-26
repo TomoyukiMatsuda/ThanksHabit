@@ -1,6 +1,6 @@
-<input id="menu-icon" type="checkbox" />
+<input id="menu-icon" type="checkbox" /> <!-- サイドバー表示、非表示切替判定に使用 -->
 
-<div class="header"> <!-- 900px以下で表示 -->
+<div class="header">
   <label for="menu-icon" class="header__open-icon"><i class="fas fa-bars"></i></label>
   <%= link_to 'ThanksHabit', root_path, class: "header__title" %>
 
@@ -23,6 +23,8 @@
         <ul class="dropdown-menu dropdown-menu-right">
           <li class="dropdown-item"><%= link_to 'マイページ', current_user, class: "dropdown-item__link" %></li>
           <li class="dropdown-divider"></li>
+          <li class="dropdown-item"><%= link_to 'アカウント情報編集', edit_user_path(current_user), class: "dropdown-item__link" %></li>
+          <li class="dropdown-divider"></li>
           <li class="dropdown-item"><%= link_to 'ログアウト', logout_path, method: :delete, class: "dropdown-item__link" %></li>
         </ul>
       </li>
@@ -30,10 +32,8 @@
       <li><%= link_to 'アカウント作成', signup_path %></li>
     <% end %>
   </ul>
-
-
-
 </div>
+
 <label for="menu-icon" class="back"></label>
 
 <aside class="sidebar">
@@ -62,6 +62,7 @@
       <div class="sidebar__footer--current-user"><%= current_user.name %></div>
       <ul class="sidebar__footer--link">
         <li class="sidebar__footer--link-list"><%= link_to 'マイページ', current_user %></li>
+        <li class="sidebar__footer--link-list"><%= link_to 'アカウント情報編集', edit_user_path(current_user), class: "dropdown-item__link" %></li>
         <li class="sidebar__footer--link-list"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
       </ul>
     </div>
