@@ -1,0 +1,28 @@
+@import "setup";
+
+.join-group-container {
+  margin: 10px auto;
+  width: 98%;
+  border: 1px solid $c-light-gray;
+  border-radius: 10px;
+
+  &__head {
+    min-height: 50px;
+    display: flex;
+    justify-content: center;
+    background-color: $c-light-blue2;
+    align-items: center;
+    border-radius: 9px 9px 0 0;
+    font-size: 20px;
+  }
+
+  &__main {
+    margin: 5px auto;
+    text-align: center;
+    font-size: 18px;
+
+    &--group-link a {
+      color: $c-deep-blue;
+    }
+  }
+}
