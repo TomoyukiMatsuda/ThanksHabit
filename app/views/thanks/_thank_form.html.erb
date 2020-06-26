@@ -1,16 +1,17 @@
-<%= form_with model: thank, local: true do |f| %>
-  <%= render 'layouts/error_messages', model: f.object %>
-  <div class="row">
+<%= form_with model: thank, local: true, class: "thank-form" do |f| %>
 
-    <div class="form-group col-sm-10 mt-3">
-      <%= f.label :content, "#{user.name} さんへ感謝" %>
-      <%= f.text_field :content, class: 'form-control' %>
+  <div class="thank-form__left">
+    <%= render 'layouts/error_messages', model: f.object %>
+    <div class="thank-form__left--label">
+      <i class="far fa-hand-point-right"></i><i class="far fa-heart"></i> <%= "#{user.name}" %> さん
     </div>
+    <%= f.text_field :content, class: "thank-form__left--input form-control" %>
+  </div>
 
-    <div class="form-group col-sm-2 mt-5">
-      <%= f.hidden_field :receiver_id, value: user.id %>
-      <%= f.hidden_field :group_id, value: group.id %>
-      <%= f.submit '感謝', class: 'form-control btn btn-sm btn-info' %>
-    </div>
+  <%= f.hidden_field :receiver_id, value: user.id %>
+  <%= f.hidden_field :group_id, value: group.id %>
+
+  <div class="thank-form__right">
+    <%= button_tag sanitize('<i class="far fa-paper-plane"></i>'), type: "submit", class: "btn thank-form__right--btn" %>
   </div>
 <% end %>
