@@ -6,7 +6,7 @@ class Thank < ApplicationRecord
 
   # ransackで検索可能なカラムを制限
   def self.ransackable_attributes(auth_object = nil)
-    %w[content created_at]
+    "created_at"
   end
 
   # ransackで検索条件に意図しない関連を含めないように制限
