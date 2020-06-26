@@ -1,0 +1,97 @@
+
+.group-container {
+  margin: 30px auto;
+  width: 96%;
+  max-width: 850px;
+  border-radius: 15px;
+  background-color: #f1f8ff;
+  box-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
+}
+
+.group-name {
+  min-height: 50px;
+  display: flex;
+  justify-content: center;
+  background-color: rgb(157, 235, 255);
+  align-items: center;
+  border-radius: 10px 10px 0 0;
+  font-size: 25px;
+  margin-bottom: 15px;
+
+  & a {
+    color: black;
+  }
+}
+
+// 感謝登録フォーム
+.thank-form {
+  display: flex;
+  justify-content: center;
+  margin: 0 auto;
+  width: 95%;
+  padding-bottom: 18px;
+
+  &__left {
+    flex: 6;
+    max-width: 550px;
+
+    &--label {
+      font-size: 20px;
+    }
+    
+    &--input {
+      border: 1px solid #cecece;
+      border-radius: 5px;
+      width: 100%;
+    }
+  }
+
+  &__right {
+    flex: 1;
+    max-width: 48px;
+    display: flex;
+    align-items: flex-end;
+
+    &--btn {
+      width: 100%;
+      font-size: 24px;
+      margin-left: 2px;
+      padding: 0;
+      background-color: pink;
+      border-radius: 5px
+    }
+  }
+}
+
+// 感謝登録完了後の表示
+.thanked-content {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 0 auto;
+  min-height: 68px;
+  width: 95%;
+  padding-bottom: 18px;
+
+  &__text {
+    flex: 6;
+    max-width: 550px;
+    font-size: 20px;
+  }
+
+  &__undo-btn {
+    flex: 1;
+    max-width: 48px;
+    display: flex;
+    align-items: flex-end;
+
+    &--link {
+      width: 100%;
+      font-size: 24px;
+      margin-left: 2px;
+      padding: 0;
+      background-color: #ee1a1a;
+      border-radius: 5px
+    }
+  }
+}
