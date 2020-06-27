@@ -1,0 +1,43 @@
+@import "setup";
+
+.account-header {
+  font-size: 28px;
+  margin: 25px auto;
+  text-align: center;
+}
+
+.account-footer {
+  margin: 0 auto;
+  width: 96%;
+  max-width: 450px;
+  font-size: 17px;
+  text-align: end;
+}
+
+// フォーム要素内
+.account-form {
+  margin: 0 auto;
+  width: 96%;
+  max-width: 450px;
+  font-size: 18px;
+  
+  &__group {
+    margin-bottom: 15px;
+
+    &--label {
+      margin: 0;
+    }
+  }
+
+  &__submit {
+    margin: 0 auto 15px;
+
+    &--btn {
+      width: 100%;
+      color: #fff;
+      background-color: $c-deep-blue;
+      font-size: 18px;
+    }
+  }
+}
+

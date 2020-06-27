@@ -29,7 +29,11 @@
         </ul>
       </li>
     <% else %>
-      <li><%= link_to 'アカウント作成', signup_path %></li>
+      <% if current_page?(root_path) %>
+        <li class="header__nav--link-list"><%= link_to 'アカウント作成', signup_path %></li>
+      <% else %>
+        <li class="header__nav--link-list"><%= link_to 'ログイン', root_path %></li>
+      <% end %>
     <% end %>
   </ul>
 </div>
@@ -63,13 +67,17 @@
       <ul class="sidebar__footer--link">
         <li class="sidebar__footer--link-list"><%= link_to 'マイページ', current_user %></li>
         <li class="sidebar__footer--link-list"><%= link_to 'アカウント情報編集', edit_user_path(current_user), class: "dropdown-item__link" %></li>
-        <li class="sidebar__footer--link-list"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+        < class="sidebar__footer--link-list"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
       </ul>
     </div>
 
   <% else %> <!-- 未ログイン時 サイドバー -->
     <div class="sidebar__nav">
-      <%= link_to 'アカウント作成', signup_path %>
+      <% if current_page?(root_path) %>
+        <%= link_to 'アカウント作成', signup_path %>
+      <% else %>
+        <%= link_to 'ログイン', root_path %>
+      <% end %>
     </div>
   <% end %>
 </aside>
