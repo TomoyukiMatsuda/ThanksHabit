@@ -1,11 +1,13 @@
 @import "account";
 
-
-.group-new-header {
+// グループ作成ページとグループ名編集ページ双方に適用
+.group-new-header,
+.group-edit-header {
   @extend .account-header;
 }
 
-.group-new-footer {
+.group-new-footer, 
+.group-edit-footer {
   @extend .account-footer;
 }
 
