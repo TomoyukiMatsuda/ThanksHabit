@@ -48,10 +48,10 @@
   height: 60px;
   position: fixed;
   z-index: 1;
+  padding: 0 15px;
   background-color: $c-deep-blue;
 
   &__title {
-    margin-left: 10px;
     color: #fff;
     font-size: 35px;
   }
@@ -67,14 +67,13 @@
 
       a {
         color: #fff;
-      }  
+      }
     }
-    
   }
 }
 //ヘッダー終わり
 
-// ハンバーガーメニュー begin
+// ハンバーガーメニュー
 .header__open-icon,
 .sidebar__close-icon {
   display: none;
@@ -84,13 +83,13 @@ input[type="checkbox"] {
   position: absolute;
   left: -50vw;
 }
-// ハンバーガーメニュー end
+// ハンバーガーメニュー 終わり
 
-// ドロップダウンリンク begin
+// ドロップダウンリンク
 .dropdown-item a {
   color: $c-deep-gray;
 }
-// ドロップダウンリンク end
+// ドロップダウンリンク 終わり
 
 
 @media screen and (max-width: 900px) {
