@@ -1,9 +1,7 @@
-<div class="text-center">
-  <h1>新規グループ作成</h1>
+<div class="group-new-header">
+  新規グループ作成
 </div>
-
-<div class="row">
-  <div class="col-sm-6 offset-sm-3">
-    <%= render 'form', group: @group %>
-  </div>
+<%= render 'form', group: @group %>
+<div class="group-new-footer">
+  <%= link_to 'トップページへ戻る', root_path %>
 </div>
