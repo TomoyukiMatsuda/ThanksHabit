@@ -1,9 +1,7 @@
-<div class="text-center">
-  <h1>グループ名変更</h1>
+<div class="group-edit-header">
+  グループ名変更
 </div>
-
-<div class="row">
-  <div class="col-sm-6 offset-sm-3">
-    <%= render 'form', group: @group %>
-  </div>
+<%= render 'form', group: @group %>
+<div class="group-edit-footer">
+  <%= link_to "#{@group.name}のページに戻る", group_path(@group) %>
 </div>
