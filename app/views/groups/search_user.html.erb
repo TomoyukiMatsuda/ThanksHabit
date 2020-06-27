@@ -1,43 +1,31 @@
-<h3>ユーザを探して「<%= @group.name %>」に招待しよう</h3>
-
-<%= search_form_for @q, url: search_user_group_path(@group) do |f| %>
-    <%= f.label :name_cont, 'ユーザ名' %>
-
-  <div class="form-group d-flex align-items-center row">
-    <%= f.search_field :name_cont, class: 'form-control col-sm-9', placeholder: '検索キーワードを入力' %>
-    <%= f.submit class: 'btn btn-outline-primary col-sm-2 offset-sm-1' %>
+<div class="search-user">
+  <div class="search-user__header">「<%= @group.name %>」にユーザを招待しよう</div>
+  <%= search_form_for @q, url: search_user_group_path(@group), class: "search-user__form" do |f| %>
+    <%= f.search_field :name_cont, class: 'form-control search-user__form--input', placeholder: 'ユーザ名で検索' %>
+    <%= button_tag sanitize('<i class="fas fa-search"></i>'), type: "submit", class: "btn search-user__form--btn" %>
+  <% end %>
+  <div class="search-user__clear-link">
+    <%= link_to '検索結果をクリア', search_user_group_path(@group) %>
   </div>
-<% end %>
-<div class="text-right mt-2">
-  <%= link_to '検索結果をクリア', search_user_group_path(@group) %>
-</div>
-
-<table class="table">
-  <thead>
-    <tr>
-      <th>ユーザ名</th>
-      <th></th>
-    </tr>
-  </thead>
-  <tbody>
+  <div class="search-user__status">
     <% if @invitable_users == nil %> <!-- 検索していない状態または、空文字検索をかけた場合 -->
-      <p>グループに招待したいユーザを検索してください</p>
+      <div class="search-user__status--before">グループに招待したいユーザを検索してください</div>
     <% elsif @invitable_users == [] %> <!-- 検索の結果該当ユーザなし -->
-      <p>キーワードに関連する招待可能なユーザが見つかりませんでした。</p>
+      <div class="search-user__status--failed">検索キーワードに該当するユーザが見つかりませんでした</div>
     <% else %> <!-- 検索に該当するユーザあり -->
       <% @invitable_users.each do |invitable_user| %>
-        <tr>
-          <td><%= invitable_user.name %> さん</td>
-          <td>
-            <%= form_with(model: @group_user, local: true) do |f| %>
-              <%= f.hidden_field :user_id, value: invitable_user.id %>
-              <%= f.hidden_field :group_id, value: @group.id %>
-              <%= f.submit "#{invitable_user.name}さんを招待", data: { confirm: "#{invitable_user.name}さんを招待しますか？" }, class: 'btn btn-primary btn-block' %>
-            <% end %>
-          </td>
-        </tr>
+        <div class="search-user__status--success">
+          <div class="invitable-user">
+            <i class="fas fa-user"></i>
+            <%= invitable_user.name %> さん
+          </div>
+          <%= form_with model: @group_user, local: true, class: "invite-form" do |f| %>
+            <%= f.hidden_field :user_id, value: invitable_user.id %>
+            <%= f.hidden_field :group_id, value: @group.id %>
+            <%= button_tag sanitize('<i class="fas fa-user-plus"></i> 招待'), type: "submit", class: "btn invite-form__btn", data: { confirm: "#{invitable_user.name}さんを招待しますか？" } %>
+          <% end %>
+        </div>
       <% end %>
     <% end %>
-
-  </tbody>
-</table>
+  </div>
+</div>

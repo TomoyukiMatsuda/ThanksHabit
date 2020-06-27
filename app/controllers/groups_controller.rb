@@ -42,7 +42,7 @@ class GroupsController < ApplicationController
     @q = User.where.not(id: current_user.id).ransack(params[:q]) # search_form_for用
 
     if params[:q] != nil && params[:q][:name_cont].presence # 検索をした場合且つ、空文字での検索ではない場合のみuserインスタンスを取得する
-      users = @q.result(distinct: true).order(id: :desc).page(params[:page]).per(10)
+      users = @q.result(distinct: true).order(id: :desc)
       @invitable_users = users.reject { |user| user.groups.include?(@group) } # 招待可能ユーザに限定した配列にする
     end
   end
