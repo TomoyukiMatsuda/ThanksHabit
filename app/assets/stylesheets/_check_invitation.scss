@@ -1,0 +1,30 @@
+@import "setup";
+@import "account";
+
+.check-invitation-header {
+  @extend .account-header;
+}
+
+.check-invitation-container {
+  width: 96%;
+  max-width: 500px;
+  display: flex;
+  justify-content: center;
+  margin: 60px auto;
+
+  &__join-btn,
+  &__refuse-btn {
+    color: #fff;
+    border-radius: 10px;
+    font-size: 20px;
+  }
+
+  &__join-btn {
+    margin-right: 15%;
+    background-color: $c-pink;
+  }
+
+  &__refuse-btn {
+    background-color: $c-gray;
+  }
+}
