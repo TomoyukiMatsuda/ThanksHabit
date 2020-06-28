@@ -1,15 +1,12 @@
 <% if logged_in? %>
   <% @groups.each do |group| %>
     <% if permitted_group_user(current_user, group) %> <!--参加済みグループのみを表示!-->
-
       <div class="group-container">
         <div class="group-name">
           <%= link_to "#{group.name}", group_path(group) %>
         </div>
-        
           <% group.users.each do |user| %>
             <% if current_user != user && permitted_group_user(user, group) %> <!-- ログインユーザでない 且つ 参加済みユーザのみを表示 !-->
-
               <% if thank_today(@thanks, user, group) %> <!-- 今日の感謝登録あるかないかで表示内容を変更 !-->
                 <div class="thanked-content">
                   <div class="thanked-content__text">
@@ -27,40 +24,32 @@
                   <%= render 'thanks/thank_form', thank: @new_thank, user: user, group: group %>
                 <% end %>
               <% end %>
-
             <% end %>
           <% end %>
-        
       </div>
-
-
     <% end %>
   <% end %>
   <%= paginate @groups %>
 
 <% else %>
-  <h3 class="text-center">ThanksHabitは</h3>
-  <h3 class="text-center">「感謝を伝える」を習慣化するアプリです。</h3>
-
-  <div class="row mt-5">
-    <div class="col-sm-6 offset-sm-3">
-
-      <%= form_with(url: login_path, scope: :session, local: true) do |f| %>
-
-        <div class="form-group">
-          <%= f.label :email, 'メールアドレス' %>
-          <%= f.email_field :email, class: 'form-control' %>
-        </div>
-
-        <div class="form-group">
-          <%= f.label :password, 'パスワード（8文字以上）' %>
-          <%= f.password_field :password, class: 'form-control' %>
-        </div>
-
-        <%= f.submit 'ログイン', class: 'btn btn-primary btn-block' %>
-      <% end %>
-
-      <p class="text-right">アカウントをお持ちでない方は <%= link_to 'こちら', signup_path %></p>
+  <div class="account-header">
+    ThanksHabitは<br>
+    「感謝を伝える」を習慣化するアプリです
+  </div>
+  <%= form_with url: login_path, scope: :session, local: true, class: "account-form"  do |f| %>
+    <div class="account-form__group">
+      <%= f.label :email, 'メールアドレス', class: "account-form__group--label" %>
+      <%= f.email_field :email, class: 'form-control' %>
     </div>
+    <div class="account-form__group">
+      <%= f.label :password, 'パスワード（8文字以上）', class: "account-form__group--label" %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+    <div class="account-form__submit">
+      <%= f.submit 'ログイン', class: 'btn account-form__submit--btn' %>
+    </div>
+  <% end %>
+  <div class="account-footer">
+    アカウントをお持ちでない方は <%= link_to 'こちら', signup_path %>
   </div>
 <% end %>
