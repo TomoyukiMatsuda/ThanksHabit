@@ -60,18 +60,12 @@
     }
   }
 
-  &__submit {
-    display: flex;
-    justify-content: center;
+  &__submit-btn {
     width: 100%;
-    font-size: 28px;
-    padding: 0;
+    color: $c-deep-blue;
     border: 1px solid $c-deep-blue;
     border-radius: 6px;
-
-    & btn {
-      color: $c-deep-blue;
-    }
+    margin-bottom: 5px;
   }
 
   &__undo-link a {
