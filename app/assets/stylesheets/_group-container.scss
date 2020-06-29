@@ -1,7 +1,18 @@
 @import "setup";
 
+.header-message {
+  margin: 25px auto 15px;
+  text-align: center;
+  font-size: 38px;
+  color: $c-deep-gray;
+
+  & .fa-envelope {
+    color: $c-pink;
+  }
+}
+
 .group-container {
-  margin: 30px auto;
+  margin: 0 auto 30px;
   width: 96%;
   max-width: 850px;
   border-radius: 15px;
@@ -40,12 +51,13 @@
       color: $c-deep-gray;
 
       & .fa-hand-point-right,
-      & .fa-heart {
-        font-size: 32px;
+      & .fa-heart,
+      & .fa-smile {
+        font-size: 40px;
         color: $c-pink;
       }
     }
-    
+
     &--input {
       border: 1px solid #cecece;
       border-radius: 5px;
@@ -62,7 +74,6 @@
     &--btn {
       width: 100%;
       font-size: 24px;
-      margin-left: 2px;
       padding: 0;
       color: #fff;
       background-color: $c-pink;
@@ -90,7 +101,7 @@
     & .fa-hand-point-right,
     & .fa-heart,
     & .fa-laugh-squint {
-      font-size: 32px;
+      font-size: 40px;
       color: $c-pink;
     }
   }
@@ -104,7 +115,6 @@
     &--link {
       width: 100%;
       font-size: 24px;
-      margin-left: 2px;
       padding: 0;
       color: #fff;
       background-color: $c-gray;
