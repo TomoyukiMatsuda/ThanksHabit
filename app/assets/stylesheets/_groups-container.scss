@@ -4,7 +4,7 @@
   min-height: 100vh;
 
   &__main-content {
-    flex: 4;
+    flex: 7;
     padding: 25px 0;
     max-width: 850px;
     overflow: auto;
@@ -12,7 +12,14 @@
   }
 
   &__right-content {
-    flex: 1;
+    flex: 3;
     max-width: 350px;
+  }
+}
+
+@media screen and (max-width: 900px) {
+
+  .groups-container__right-content {
+    display: none;
   }
 }

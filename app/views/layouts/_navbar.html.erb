@@ -3,7 +3,6 @@
 <div class="header">
   <label for="menu-icon" class="header__open-icon"><i class="fas fa-bars"></i></label>
   <%= link_to 'ThanksHabit', root_path, class: "header__title" %>
-
   <ul class="header__nav">
     <% if logged_in? %>
       <li class="header__nav--link-list"><%= link_to '新規グループ作成', new_group_path %></li>
@@ -40,7 +39,7 @@
 
 <label for="menu-icon" class="back"></label>
 
-<aside class="sidebar">
+<aside class="sidebar"> <!-- 画面幅縮小時ハンバーガーメニューで表示 -->
   <label for="menu-icon" class="sidebar__close-icon"><i class="fas fa-times fa-2x"></i></label>
 
   <% if logged_in? %> <!-- ログイン時サイドバー !-->
@@ -48,18 +47,50 @@
       <ul class="sidebar__nav--link-list">
         <li><%= link_to  '感謝を送る', root_path %></li>
         <li><%= link_to 'グループを作る', new_group_path %></li>
-
         <% unless unpermit_group_users(current_user) == []  %> <!-- 承認していないグループ招待があれば表示 !-->
           <li class="nav-item dropdown"> <!-- ドロップダウンにはBootstrapを採用 -->
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">招待があります</a>
-            <ul class="dropdown-menu dropdown-menu-right">
+            <ul class="dropdown-menu dropdown-menu-left">
               <% unpermit_group_users(current_user).each do |unpermit_group_user| %>
-                <li class="dropdown-item"><%= link_to "「#{unpermit_group_user.group.name}」招待", check_group_user_path(unpermit_group_user), class: "dropdown-item__link" %></li>
+                <li class="dropdown-item">
+                  <%= link_to "「#{unpermit_group_user.group.name}」招待", check_group_user_path(unpermit_group_user), class: "dropdown-item__link" %>
+                </li>
               <% end %>
             </ul>
           </li>
         <% end %>
-
+        <% if @user && @user.id != nil && current_page?(user_path(@user)) %> <!-- ユーザ詳細画面にいるときのみ表示 -->
+          <li class="nav-item dropdown"> <!-- ドロップダウンにはBootstrapを採用 -->
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">参加グループ</a>
+            <ul class="dropdown-menu dropdown-menu-left">
+              <% @groups.each do |group| %>
+                <% if permitted_group_user(@user, group) %>
+                  <li class="dropdown-item">
+                    <%= link_to group.name, group %>
+                  </li>
+                <% end %>
+              <% end %>
+            </ul>
+          </li>
+        <% end %>
+        <% if @group && @group.id != nil && current_page?(group_path(@group)) %> <!-- グループ詳細画面にいるときのみ表示 -->
+          <li class="nav-item dropdown"> <!-- ドロップダウンにはBootstrapを採用 -->
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">グループユーザ</a>
+            <ul class="dropdown-menu dropdown-menu-left">
+              <% @users.each do |user| %>
+                <li class="dropdown-item">
+                  <% if permitted_group_user(user, @group) %>
+                    <%= user.name %> さん
+                  <% else %>
+                    <%= user.name %> さん(招待中)
+                  <% end %>
+                </li>
+              <% end %>
+            </ul>
+          </li>
+          <li><%= link_to 'ユーザを招待', search_user_group_path(@group) %></li>
+          <li><%= link_to 'グループ名を変更', edit_group_path(@group) %></li>
+        <% end %>
       </ul>
     </div>
     <div class="sidebar__footer">
@@ -70,7 +101,6 @@
         <li class="sidebar__footer--link-list"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
       </ul>
     </div>
-
   <% else %> <!-- 未ログイン時 サイドバー -->
     <div class="sidebar__nav">
       <% if current_page?(root_path) %>

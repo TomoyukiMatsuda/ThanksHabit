@@ -1,12 +1,10 @@
+<%= render 'layouts/sub_header', q: @q, url: group_path(@group) %> <!-- 画面幅縮小時のみ表示 -->
 <div class="groups-container">
-
   <div class="groups-container__main-content">
     <%= render 'thanks/index', user: current_user, thanks: @thanks, q: @q, group: @group %>
   </div>
-
   <div class="groups-container__right-content">
     <%= render 'thanks/search_form', q: @q, url: group_path(@group) %>
-
     <div class="join-user-container">
       <div class="join-user-container__head">
         <%= @group.name %>
@@ -30,8 +28,6 @@
           <%= link_to 'グループ名を変更', edit_group_path(@group) %>
         </div>
       </div>
-
     </div>
   </div>
-
 </div>
