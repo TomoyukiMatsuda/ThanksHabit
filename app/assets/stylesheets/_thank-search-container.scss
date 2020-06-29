@@ -10,7 +10,8 @@
     min-height: 50px;
     display: flex;
     justify-content: center;
-    background-color: $c-light-blue2;
+    color: #fff;
+    background-color: $c-blue;
     align-items: center;
     border-radius: 9px 9px 0 0;
     font-size: 20px;
@@ -60,8 +61,8 @@
 
   &__submit-btn {
     width: 100%;
-    color: $c-deep-blue;
-    border: 1px solid $c-deep-blue;
+    color: #fff;
+    background-color: $c-blue;
     border-radius: 6px;
     margin-bottom: 5px;
   }
@@ -96,7 +97,6 @@
   .thank-search-form-group {
     width: 80%;
     min-width: 300px;
-    margin: 0 auto;
 
     &__upper {
       margin-bottom: 6px;
@@ -126,16 +126,11 @@
 
     &__submit-btn {
       width: 87.5%;
-      color: #fff;
       background-color: $c-deep-blue;
-      border-radius: 6px;
-      margin-bottom: 5px;
     }
 
     &__undo-link a {
-      display: flex;
       justify-content: flex-start;
-      color: $c-deep-blue;
     }
   }
 }

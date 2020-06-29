@@ -7,7 +7,8 @@
   min-height: 150px;
   border-radius: 15px;
   box-shadow: 1px 1px 4px rgba(0, 0, 0, .7);
-  background-color: $c-light-blue2;
+  color: $c-deep-gray;
+  background-color: #fcebeb;
 
   &__upper-info {
     display: flex;
@@ -23,7 +24,7 @@
 
       &--icon {
         font-size: 48px;
-        color: $c-blue;
+        color: $c-pink;
       }
 
       &--name {
@@ -42,7 +43,7 @@
 
       &--icon {
         font-size: 48px;
-        color: $c-blue;
+        color: $c-pink;
       }
 
       &--name {
