@@ -1,5 +1,11 @@
 <% if logged_in? %>
   <h1 class="header-message">１日１回、感謝を言葉に<i class="far fa-envelope"></i></h1>
+  <% if @groups == [] %>
+    <p class="no-group-message">
+      参加グループがありません<br>
+      グループを作成してユーザを招待しよう
+    </p>
+  <% end %>
   <% @groups.each do |group| %>
     <% if permitted_group_user(current_user, group) %> <!--参加済みグループのみを表示!-->
       <div class="group-container">
