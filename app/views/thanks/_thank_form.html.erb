@@ -3,9 +3,9 @@
   <div class="thank-form__left">
     <%= render 'layouts/error_messages', model: f.object %>
     <div class="thank-form__left--label">
-      <i class="far fa-hand-point-right"></i><i class="far fa-heart"></i> <%= "#{user.name}" %> さん
+      <i class="far fa-hand-point-right"></i><i class="far fa-heart"></i> <%= "#{user.name}" %> さん <i class="far fa-smile"></i>
     </div>
-    <%= f.text_field :content, class: "thank-form__left--input form-control" %>
+    <%= f.text_field :content, class: "thank-form__left--input form-control", placeholder: "どんな気持ち込めますか？" %>
   </div>
 
   <%= f.hidden_field :receiver_id, value: user.id %>
