@@ -1,5 +1,7 @@
 <div class="thank-search-container">
-  <div class="thank-search-container__head">日付で絞り込む</div>
+  <div class="thank-search-container__head">
+    日付で絞り込む
+  </div>
   <%= search_form_for q, url: url, class: "thank-search-form-group" do |f| %>
     <div class="thank-search-form-group__upper">
       <%= f.date_field :created_at_lteq_end_of_day, class: 'form-control thank-search-form-group__upper--input' %>

@@ -4,7 +4,7 @@
   color: $c-deep-gray;
   font-size: 35px;
   text-align: center;
-  
+
   &__face-icon {
     font-size: 50px;
     color: $c-blue;
@@ -18,8 +18,9 @@
 
 .date-switching {
   text-align: end;
-  margin-bottom: 15px;
+  width: 80%;
+  margin: 0 auto 15px;
 }
 .sort_link {
-  color: black;
+  color: $c-deep-blue;
 }
