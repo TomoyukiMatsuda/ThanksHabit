@@ -1,0 +1,14 @@
+@import "setup";
+
+.sub-header {
+  display: none;
+}
+
+@media screen and (max-width: 900px) {
+
+  .sub-header {
+    display: flex;
+    min-height: 195px;
+    background-color: $c-light-blue;
+  }
+}

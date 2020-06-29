@@ -1,12 +1,10 @@
+<%= render 'layouts/sub_header', q: @q, url: user_path(@user) %> <!-- 画面幅縮小時のみ表示 -->
 <div class="users-container">
-
   <div class="users-container__main-content">
     <%= render 'thanks/index', user: @user, thanks: @thanks, q: @q %>
   </div>
-
   <div class="users-container__right-content">
     <%= render 'thanks/search_form', q: @q, url: user_path(@user) %>
-
     <div class="join-group-container">
       <div class="join-group-container__head">
         参加グループ
