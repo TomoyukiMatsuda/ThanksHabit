@@ -33,7 +33,7 @@ class UsersController < ApplicationController
       flash[:success] = 'ユーザ情報を更新しました'
       redirect_to @user
     else
-      flash.n ow[:danger] = 'ユーザ情報の更新に失敗しました'
+      flash.now[:danger] = 'ユーザ情報の更新に失敗しました'
       render :edit
     end
   end
