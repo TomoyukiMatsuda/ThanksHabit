@@ -1,5 +1,5 @@
 class Group < ApplicationRecord
-  validates :name, presence: true, length: { maximum: 50 }
+  validates :name, presence: true, length: { maximum: 20 }
 
   has_many :group_users
   has_many :users, through: :group_users, source: :user
