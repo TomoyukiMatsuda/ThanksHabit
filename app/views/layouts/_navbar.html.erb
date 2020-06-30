@@ -1,5 +1,5 @@
 <input id="menu-icon" type="checkbox" /> <!-- サイドバー表示、非表示切替判定に使用 -->
-
+<!-- ヘッダー -->
 <div class="header">
   <label for="menu-icon" class="header__open-icon"><i class="fas fa-bars"></i></label>
   <%= link_to 'ThanksHabit', root_path, class: "header__title" %>
@@ -42,14 +42,23 @@
 <aside class="sidebar"> <!-- 画面幅縮小時ハンバーガーメニューで表示 -->
   <label for="menu-icon" class="sidebar__close-icon"><i class="fas fa-times fa-2x"></i></label>
 
-  <% if logged_in? %> <!-- ログイン時サイドバー !-->
+  <!-- ログイン時サイドバー -->
+  <% if logged_in? %>
     <div class="sidebar__nav">
       <ul class="sidebar__nav--link-list">
-        <li><%= link_to  '感謝を送る', root_path %></li>
-        <li><%= link_to 'グループを作る', new_group_path %></li>
+        <li>
+          <%= link_to root_path do %>
+            <i class="fas fa-hand-holding-heart"></i> 感謝を送る
+          <% end %>
+        </li>
+        <li>
+          <%= link_to new_group_path do %>
+            <i class="fas fa-users"></i> グループを作る
+          <% end %>
+        </li>
         <% unless unpermit_group_users(current_user) == []  %> <!-- 承認していないグループ招待があれば表示 !-->
           <li class="nav-item dropdown"> <!-- ドロップダウンにはBootstrapを採用 -->
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">招待があります</a>
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-bell"></i> 招待があります</a>
             <ul class="dropdown-menu dropdown-menu-left">
               <% unpermit_group_users(current_user).each do |unpermit_group_user| %>
                 <li class="dropdown-item">
@@ -61,7 +70,7 @@
         <% end %>
         <% if current_page?(user_path(current_user)) %> <!-- ユーザ詳細画面にいるときのみ表示 -->
           <li class="nav-item dropdown"> <!-- ドロップダウンにはBootstrapを採用 -->
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">参加グループ</a>
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user-friends"></i> 参加グループ</a>
             <ul class="dropdown-menu dropdown-menu-left">
               <% @groups.each do |group| %>
                 <% if permitted_group_user(@user, group) %>
@@ -75,7 +84,7 @@
         <% end %>
         <% if @group && @group.id != nil && current_page?(group_path(@group)) %> <!-- グループ詳細画面にいるときのみ表示 -->
           <li class="nav-item dropdown"> <!-- ドロップダウンにはBootstrapを採用 -->
-            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">グループユーザ</a>
+            <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown"><i class="fas fa-user-friends"></i> グループユーザ</a>
             <ul class="dropdown-menu dropdown-menu-left">
               <% @users.each do |user| %>
                 <li class="dropdown-item">
@@ -88,25 +97,51 @@
               <% end %>
             </ul>
           </li>
-          <li><%= link_to 'ユーザを招待', search_user_group_path(@group) %></li>
-          <li><%= link_to 'グループ名を変更', edit_group_path(@group) %></li>
+          <li>
+            <%= link_to search_user_group_path(@group) do %>
+              <i class="fas fa-user-plus"></i> ユーザを招待
+            <% end %>
+          </li>
+          <li>
+            <%= link_to edit_group_path(@group) do %>
+              <i class="fas fa-users-cog"></i> グループ名を変更
+            <% end %>
+          </li>
         <% end %>
       </ul>
     </div>
+    <!-- サイドバーフッター -->
     <div class="sidebar__footer">
       <div class="sidebar__footer--current-user"><%= current_user.name %></div>
       <ul class="sidebar__footer--link">
-        <li class="sidebar__footer--link-list"><%= link_to 'マイページ', current_user %></li>
-        <li class="sidebar__footer--link-list"><%= link_to 'ユーザ情報編集', edit_user_path(current_user), class: "dropdown-item__link" %></li>
-        <li class="sidebar__footer--link-list"><%= link_to 'ログアウト', logout_path, method: :delete %></li>
+        <li class="sidebar__footer--link-list">
+          <%= link_to current_user do %>
+            <i class="fas fa-user-circle"></i> マイページ
+          <% end %>
+        </li>
+        <li class="sidebar__footer--link-list">
+          <%= link_to edit_user_path(current_user), class: "dropdown-item__link" do %>
+            <i class="fas fa-user-edit"></i> ユーザ情報編集
+          <% end %>
+        </li>
+        <li class="sidebar__footer--link-list">
+          <%= link_to logout_path, method: :delete do %>
+            <i class="fas fa-sign-out-alt"></i> ログアウト
+          <% end %>
+        </li>
       </ul>
     </div>
-  <% else %> <!-- 未ログイン時 サイドバー -->
+  <% else %>
+    <!-- 未ログイン時 サイドバー -->
     <div class="sidebar__nav">
       <% if current_page?(root_path) %>
-        <%= link_to 'アカウント作成', signup_path %>
+        <%= link_to signup_path do %>
+          <i class="fas fa-user-plus"></i> アカウント作成
+        <% end %>
       <% else %>
-        <%= link_to 'ログイン', root_path %>
+        <%= link_to root_path do %>
+          <i class="fas fa-sign-in-alt"></i> ログイン
+        <% end %>
       <% end %>
     </div>
   <% end %>
