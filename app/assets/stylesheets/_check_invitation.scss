@@ -3,6 +3,7 @@
 
 .check-invitation-header {
   @extend .account-header;
+  color: $c-deep-gray;
 }
 
 .check-invitation-container {

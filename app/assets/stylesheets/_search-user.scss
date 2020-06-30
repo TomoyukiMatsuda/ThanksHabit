@@ -4,6 +4,7 @@
   margin: 25px auto;
   width: 96%;
   max-width: 800px;
+  color: $c-deep-gray;
 
   &__header {
     font-size: 28px;
@@ -37,7 +38,7 @@
 
   &__status {
     font-size: 20px;
-    
+
     &--before,
     &--failed {
       text-align: center;
