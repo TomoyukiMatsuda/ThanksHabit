@@ -59,7 +59,7 @@
             </ul>
           </li>
         <% end %>
-        <% if @user && @user.id != nil && current_page?(user_path(@user)) %> <!-- ユーザ詳細画面にいるときのみ表示 -->
+        <% if current_page?(user_path(current_user)) %> <!-- ユーザ詳細画面にいるときのみ表示 -->
           <li class="nav-item dropdown"> <!-- ドロップダウンにはBootstrapを採用 -->
             <a href="#" class="nav-link dropdown-toggle" data-toggle="dropdown">参加グループ</a>
             <ul class="dropdown-menu dropdown-menu-left">

@@ -1,7 +1,7 @@
 @import "setup";
 
 .thank-card {
-  margin: 0 auto 15px;
+  margin: 0 auto 20px;
   width: 80%;
   min-width: 200px;
   min-height: 150px;
@@ -10,6 +10,11 @@
   color: $c-deep-gray;
   background-color: #fcebeb;
 
+  &__group-name {
+    padding: 3px 0 3px 18px;
+    color: $c-gray;
+  }
+
   &__upper-info {
     display: flex;
     height: 55%;
@@ -17,7 +22,7 @@
     margin: 0 auto;
     text-align: center;
     align-items: center;
-    border-bottom: 1px solid rgb(207, 207, 207);
+    border-bottom: 1px solid #cfcfcf;
 
     &--send-user {
       flex: 2;
@@ -37,7 +42,7 @@
       color: $c-pink;
       font-size: 38px;
     }
-    
+
     &--reciever {
       flex: 2;
 
@@ -65,10 +70,9 @@
     }
 
     &--date {
-      flex: 1;
-      color: #918f8f;
+      color: $c-gray;
       text-align: end;
-      padding: 0 18px 0 10px;
+      padding-right: 18px;
     }
   }
 }
