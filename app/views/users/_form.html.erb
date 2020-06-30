@@ -2,7 +2,7 @@
   <%= render 'layouts/error_messages', model: f.object %>
 
   <div class="account-form__group">
-    <%= f.label :name, 'ユーザ名', class: "account-form__group--label" %>
+    <%= f.label :name, 'ユーザ名（15文字以内）', class: "account-form__group--label" %>
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
