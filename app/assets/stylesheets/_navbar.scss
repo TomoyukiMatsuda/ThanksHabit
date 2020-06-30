@@ -10,26 +10,29 @@
   display: flex;
   flex-direction: column;
   z-index: 1;
+  padding-left: 15px;
   background-color: $c-deep-blue;
-  font-size: 24px;
-  text-align: center;
+  font-size: 22px;
   transition: all 0.2s;
+
+  li {
+    margin-top: 8px;
+  }
 
   a {
     color: #fff;
   }
 
-  &__nav {
-
-    &--link-list {
-
-    }
+  .nav-link {
+    padding: 0;
   }
 
   &__footer {
     margin: auto 0 30px;
 
     &--current-user {
+      font-weight: bold;
+      margin-bottom: 8px;
       color: #fff;
     }
 
@@ -59,7 +62,6 @@
   &__nav {
     display: flex;
     align-items: center;
-    text-align: end;
     font-size: 20px;
 
     &--link-list {
@@ -118,7 +120,7 @@ input[type="checkbox"] {
     &__close-icon {
       display: block;
       text-align: left;
-      padding: 10px;
+      padding-top: 7px;
     }
   }
 
