@@ -8,14 +8,18 @@ class GroupsController < ApplicationController
   def create
     @group = Group.new(group_params)
 
-    if @group.save
-      @group_users = current_user.group_users.create(group_id: @group.id, permission: true)
+    # トランザクションを適用(グループの作成と中間テーブルの同時作成)
+    @group.transaction do
+      @group.save!
+      current_user.group_users.create!(group_id: @group.id, permission: true)
+    end
+    # 成功時の処理
       flash[:success] = '新しいグループを作成しました'
       redirect_to @group
-    else
+    rescue => e
+    # 失敗時の処理
       flash.now[:danger] = 'グループ作成に失敗しました'
       render :new
-    end
   end
 
   def show
