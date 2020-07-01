@@ -2,8 +2,13 @@ $c-deep-blue: #4072b3;
 $c-blue: #6088c6;
 $c-light-blue: #aec4e5;
 $c-light-blue2: #f1f8ff;
-$c-deep-pink: #fa4993;
 $c-pink: #eb8686;
+$c-light-pink: #ffb5b5;
 $c-deep-gray: #5b5b5b;
 $c-gray: #757575;
 $c-light-gray: #c0c0c0;
+
+a:hover {
+  text-decoration: none;
+  font-weight: bold;
+}

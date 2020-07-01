@@ -57,6 +57,11 @@
   &__title {
     color: #fff;
     font-size: 35px;
+
+    &:hover {
+      color: #fff;
+      font-weight: normal;
+    }
   }
 
   &__nav {
@@ -105,6 +110,10 @@ input[type="checkbox"] {
       position: absolute;
       left: 10px;
       font-size: 35px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
 
     &__title, a {
@@ -121,7 +130,12 @@ input[type="checkbox"] {
     &__close-icon {
       display: block;
       text-align: left;
-      padding-top: 7px;
+      width: min-content;
+      margin-top: 7px;
+
+      &:hover {
+        cursor: pointer;
+      }
     }
   }
 

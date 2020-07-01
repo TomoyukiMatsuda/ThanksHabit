@@ -83,7 +83,12 @@
       padding: 0;
       color: #fff;
       background-color: $c-pink;
-      border-radius: 5px
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $c-light-pink;
+        color: $c-pink;
+      }
     }
   }
 }
@@ -124,7 +129,12 @@
       padding: 0;
       color: #fff;
       background-color: $c-gray;
-      border-radius: 5px
+      border-radius: 5px;
+
+      &:hover {
+        background-color: $c-light-gray;
+        color: $c-gray;
+      }
     }
   }
 }
