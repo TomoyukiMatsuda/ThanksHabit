@@ -65,6 +65,11 @@
     background-color: $c-blue;
     border-radius: 6px;
     margin-bottom: 5px;
+
+    &:hover {
+      background-color: $c-light-blue;
+      color: $c-blue;
+    }
   }
 
   &__undo-link a {
@@ -127,6 +132,11 @@
     &__submit-btn {
       width: 87.5%;
       background-color: $c-deep-blue;
+
+      &:hover {
+        background-color: $c-blue;
+        color: #fff;
+      }
     }
 
     &__undo-link a {

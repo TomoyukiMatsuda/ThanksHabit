@@ -38,6 +38,11 @@
       color: #fff;
       background-color: $c-deep-blue;
       font-size: 18px;
+
+      &:hover {
+        background-color: $c-light-blue;
+        color: $c-deep-blue;
+      }
     }
   }
 }

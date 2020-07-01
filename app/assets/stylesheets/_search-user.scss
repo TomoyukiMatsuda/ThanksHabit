@@ -22,6 +22,13 @@
 
     &--btn {
       background-color: #ffc400;
+      color: $c-deep-gray;
+
+      &:hover {
+        background-color: orange;
+        color: #fff;
+      }
+
     }
   }
 
@@ -59,6 +66,11 @@
       & .invite-form__btn {
         color: #fff;
         background-color: $c-pink;
+
+        &:hover {
+          background-color: $c-light-pink;
+          color: $c-pink;
+        }
       }
     }
   }

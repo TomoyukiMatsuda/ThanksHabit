@@ -23,9 +23,19 @@
   &__join-btn {
     margin-right: 15%;
     background-color: $c-pink;
+
+    &:hover {
+      background-color: $c-light-pink;
+      color: $c-pink;
+    }
   }
 
   &__refuse-btn {
     background-color: $c-gray;
+
+    &:hover {
+      background-color: $c-light-gray;
+      color: $c-gray;
+    }
   }
 }
