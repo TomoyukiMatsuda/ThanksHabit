@@ -5,10 +5,10 @@ class ThanksController < ApplicationController
     @thank = current_user.thanks.build(thank_params)
 
     if @thank.save
-      flash[:success] = "#{@thank.receiver.name} さんに感謝しました"
+      flash[:success] = "#{@thank.receiver.name} さんに感謝を送りました"
       redirect_to root_url
     else
-      flash.now[:danger] = '感謝の登録に失敗しました'
+      flash.now[:danger] = '感謝の送信に失敗しました'
       @groups = current_user.groups.order(id: :desc).page(params[:page]).per(5)
       @thanks = current_user.thanks.where.not(created_at: nil)
       render 'toppages/index'
@@ -17,10 +17,10 @@ class ThanksController < ApplicationController
 
   def destroy
     if @thank.destroy
-      flash[:warning] = '状態を元に戻しました'
+      flash[:warning] = '送った感謝を取り消しました'
       redirect_to root_url
     else
-      flash[:danger] = '状態を元に戻せませんでした'
+      flash[:danger] = '感謝の取り消しに失敗しました'
       @groups = current_user.groups.order(id: :desc).page(params[:page]).per(5)
       @thanks = current_user.thanks.where.not(created_at: nil)
       render 'toppages/index'
