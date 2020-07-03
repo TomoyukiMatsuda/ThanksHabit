@@ -71,5 +71,4 @@ gem 'pry-byebug', group: :development
 gem 'kaminari'
 gem 'i18n_generators'
 gem 'ransack'
-gem 'jquery-rails'
 gem 'font-awesome-sass'
