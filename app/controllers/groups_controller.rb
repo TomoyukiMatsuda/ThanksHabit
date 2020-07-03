@@ -25,7 +25,7 @@ class GroupsController < ApplicationController
   def show
     @users = @group.users.order(id: :asc)
     @q = @group.thanks.ransack(params[:q]) # search_form_for用
-    @thanks = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(15)
+    @thanks = @q.result(distinct: true).order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def edit

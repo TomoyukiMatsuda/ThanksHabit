@@ -22,7 +22,7 @@ class UsersController < ApplicationController
   def show
     @groups = @user.groups.order(id: :asc)
     @q = Thank.ransack(params[:q])
-    @thanks = @q.result(distinct: true).where(receiver_id: current_user.id).order(created_at: :desc).page(params[:page]).per(15)
+    @thanks = @q.result(distinct: true).where(receiver_id: current_user.id).order(created_at: :desc).page(params[:page]).per(20)
   end
 
   def edit
