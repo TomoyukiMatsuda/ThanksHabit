@@ -9,7 +9,7 @@ class ThanksController < ApplicationController
       redirect_to root_url
     else
       flash.now[:danger] = '感謝の送信に失敗しました'
-      @groups = current_user.groups.order(id: :desc).page(params[:page]).per(5)
+      @groups = current_user.groups.order(id: :desc).page(params[:page]).per(10)
       @thanks = current_user.thanks.where.not(created_at: nil)
       render 'toppages/index'
     end
@@ -21,7 +21,7 @@ class ThanksController < ApplicationController
       redirect_to root_url
     else
       flash[:danger] = '感謝の取り消しに失敗しました'
-      @groups = current_user.groups.order(id: :desc).page(params[:page]).per(5)
+      @groups = current_user.groups.order(id: :desc).page(params[:page]).per(10)
       @thanks = current_user.thanks.where.not(created_at: nil)
       render 'toppages/index'
     end
