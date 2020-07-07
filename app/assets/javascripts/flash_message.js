@@ -16,7 +16,7 @@ document.addEventListener('turbolinks:load', () => {
     }, 30);
   }
 
-  // フラッシュメッセージがある場合にfadeOutFlashMsgを呼び出す
+  // flashMsgがある場合にfadeOutFlashMsgを呼び出す
   if (flashMsg !== null) {
     flashMsg.style.opacity = 0.7
     setTimeout(fadeOutFlashMsg, 3000);
