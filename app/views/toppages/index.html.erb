@@ -1,10 +1,10 @@
-<% if logged_in? %>
+<% if logged_in? %> <!-- ログイン時 -->
   <h1 class="header-message">１日１回、感謝を言葉に<i class="far fa-envelope"></i></h1>
-  <% if @groups == [] %>
-    <p class="no-group-message">
+  <% if @groups == [] %> <!-- 参加グループが存在しない時の表示 -->
+    <div class="no-group-message">
       参加グループがありません<br>
       グループを作成してユーザを招待しよう
-    </p>
+    </div>
   <% end %>
   <% @groups.each do |group| %>
     <% if permitted_group_user(current_user, group) %> <!--参加済みグループのみを表示!-->
@@ -12,6 +12,12 @@
         <div class="group-name">
           <%= link_to "#{group.name}", group_path(group) %>
         </div>
+        <% if group.users == [current_user] %> <!-- グループユーザがログインユーザのみの場合の表示 -->
+          <p class="group-container__no-user-message">
+            グループにユーザがいません<br>
+            ユーザを招待しましょう
+          </p>
+        <% else %>
           <% group.users.each do |user| %>
             <% if current_user != user && permitted_group_user(user, group) %> <!-- ログインユーザでない 且つ 参加済みユーザのみを表示 !-->
               <% if thank_today(@thanks, user, group) %> <!-- 今日の感謝登録あるかないかで表示内容を変更 !-->
@@ -33,12 +39,13 @@
               <% end %>
             <% end %>
           <% end %>
+        <% end %>
       </div>
     <% end %>
   <% end %>
   <%= paginate @groups %>
 
-<% else %>
+<% else %> <!-- 未ログイン時 -->
   <div class="account-header">
     ThanksHabitは<br>
     「感謝を伝える」を習慣化するアプリです
