@@ -1,6 +1,7 @@
 @import "setup";
 
-// アカウント作成ページ、アカウント情報編集ページ双方に適用
+// アカウント作成ページ、アカウント情報編集ページ、ログインページに適用
+
 .account-header {
   font-size: 28px;
   margin: 25px auto;
@@ -13,6 +14,11 @@
   max-width: 450px;
   font-size: 17px;
   text-align: end;
+}
+
+// ゲストユーザログイン時、ユーザ情報編集ページボタン箇所メッセージ
+.unable-to-edit-message {
+  color: $c-pink;
 }
 
 // フォーム要素内
@@ -42,6 +48,30 @@
       &:hover {
         background-color: $c-light-blue;
         color: $c-deep-blue;
+      }
+    }
+  }
+}
+
+// ゲストユーザログインボタン
+.guest-account-form {
+  margin: 55px auto 15px;
+  width: 96%;
+  max-width: 450px;
+  font-size: 18px;
+
+  &__submit {
+    margin: 0 auto 15px;
+
+    &--btn {
+      width: 100%;
+      color: #fff;
+      background-color: $c-pink;
+      font-size: 18px;
+
+      &:hover {
+        background-color: $c-light-pink;
+        color: $c-pink;
       }
     }
   }
