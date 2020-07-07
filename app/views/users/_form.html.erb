@@ -20,7 +20,14 @@
     <%= f.label :password_confirmation, '確認用パスワード（8文字以上）', class: "account-form__group--label" %>
     <%= f.password_field :password_confirmation, class: 'form-control' %>
   </div>
-  <div class="account-form__submit">
-    <%= f.submit '登録', class: 'btn account-form__submit--btn' %>
-  </div>
+
+  <% if user.email == "guest_user@mail.com" %>
+    <div class="unable-to-edit-message">
+      <i class="fas fa-exclamation-triangle"></i> ゲストユーザ情報は編集出来ません
+    </div>
+  <% else %>
+    <div class="account-form__submit">
+      <%= f.submit '登録', class: 'btn account-form__submit--btn' %>
+    </div>
+  <% end %>
 <% end %>

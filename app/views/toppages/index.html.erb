@@ -50,7 +50,7 @@
     ThanksHabitは<br>
     「感謝を伝える」を習慣化するアプリです
   </div>
-  <%= form_with url: login_path, scope: :session, local: true, class: "account-form"  do |f| %>
+  <%= form_with url: login_path, scope: :session, local: true, class: "account-form" do |f| %>
     <div class="account-form__group">
       <%= f.label :email, 'メールアドレス', class: "account-form__group--label" %>
       <%= f.email_field :email, class: 'form-control' %>
@@ -64,6 +64,13 @@
     </div>
   <% end %>
   <div class="account-footer">
-    アカウントをお持ちでない方は <%= link_to 'こちら', signup_path %>
+    アカウント作成は <%= link_to 'こちら', signup_path %>
   </div>
+  <%= form_with url: login_path, scope: :session, local: true, class: "guest-account-form" do |f| %>
+    <%= f.hidden_field :email, value: "guest_user@mail.com" %>
+    <%= f.hidden_field :password, value: "guest_user" %>
+    <div class="guest-account-form__submit">
+      <%= f.submit 'ゲストユーザでアプリを体験する', class: 'btn guest-account-form__submit--btn' %>
+    </div>
+  <% end %>
 <% end %>
