@@ -1,24 +1,89 @@
-# README
+#  👉 ♥️ ThanksHabit
+#### 「感謝を伝える」を習慣化するアプリです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## 💬 なぜこのアプリを開発したのか？
+### 「感謝を伝えるという行為を通じて感じる幸せ」を提供したかったから。
+<br>
 
-Things you may want to cover:
+ **「感謝を伝える」** という行為は、今の自分の置かれている環境が（たとえどんな環境であれ）
+ **「当たり前ではなく、ありがたいことなんだ」** と実感することだと捉えています。<br>
 
-* Ruby version
+現在、私は姉の家族に大変お世話になっています。
+姉の旦那さんは仕事の都合もあり、家族（姉と甥っ子）と顔を合わせることが無い日もしばしばあります。そこで、「感謝を伝える」ことをサポートするアプリがあれば、少しでも姉の家族に幸せを提供できるのではないか、と考えました。
+姉の家族に使ってもらうことを常に考えながら開発したアプリとなります。<br>
+**（現在実際に使ってもらい、意見をもらいながら機能面など改善を行なっています）**
 
-* System dependencies
 
-* Configuration
+## :memo: 何ができるサービスか？
+- グループを作成し（家族など）、グループユーザに対して感謝を送る（１日１回）。
+- 送った感謝の内容は記録、グループ内で共有され、過去の感謝の振り返りができる。
 
-* Database creation
+## 🌐 アプリURL
 
-* Database initialization
+### **https://thankshabit.herokuapp.com/**
+※ゲストユーザアカウントをご用意しておりますので、ぜひ気軽に触ってみてください。
 
-* How to run the test suite
+## 📗 使い方
+1. グループを作成
+2. ユーザを検索しグループに招待（参加してもらう）
+3. グループユーザに対して感謝を送る（１日１回）
+4. 感謝の記録を振り返る
 
-* Services (job queues, cache servers, search engines, etc.)
+## 💪 力を入れたポイント
+- **機能**<br>
+  - 感謝の送信を１日１回に制限
+  - グループ招待および、招待の通知機能
+  - グループ招待の承認、辞退
+機能面においてもあくまでユーザに使ってもらうことを意識。機能過多、機能先行にならないよう注意して設計しました。
 
-* Deployment instructions
+- **デザイン**
+  - UI→「気軽に、簡単に、感謝を伝える」使いやすさ
+  - UX→「感謝された喜び、感謝を伝える喜び」の表現
+  - スマホでも使いやすい仕様（レスポンシブデザイン）<br>
+上記部分を意識し、使ってもらうことを考えながら開発。CSSの微調整、修正にはかなり苦労しました。
 
-* ...
+- **開発方法**<br>
+チーム開発を意識して開発。Git, GitHubの`branch/issue/pullrequest/merge`を活用して開発しました。<br>
+開発手順についてはQiitaで記事にしております。↓↓
+ [GitHubのissueを活用した、個人アプリの開発手順を書いてみた](https://qiita.com/tkmd35/items/9612c03dc60b1c516969)
+
+## 📖 機能
+- ユーザー登録、ログイン
+- ユーザ情報編集
+- グループ作成
+- ユーザ検索（検索にはransackを使用）
+- ユーザ招待
+- グループ参加の承認、辞退
+- 感謝の送信（１日１回まで）
+- 感謝内容の削除（その日送った感謝に限定）
+- 感謝内容一覧表示
+- 感謝内容一覧からの期間検索（ransackを使用)
+- 日本語、日本時間化(i18nを使用)
+- ページネーション（kaminariを使用）
+
+##  💻 使用技術
+**●言語**
+
+- Ruby: 2.5.1
+- Ruby on Rails: 5.2.2
+- JavaScript
+- SASS
+
+
+**●ライブラリー(Gem)**
+
+- bcrypt
+- pry-byebug
+- kaminari
+- Bootstrap
+- font-awesome-sass
+- i18n_generators
+- ransack
+
+## :scroll: モックアップ（設計）
+[Cacoo](https://cacoo.com/diagrams/oJpZYMVbNzOlrV8W/BCE92)
+
+## :blush: 作者について
+- [GitHub](https://github.com/TomoyukiMatsuda)
+- [Twitter](https://twitter.com/tkmd35)
+- [Qiita](https://qiita.com/tkmd35)
