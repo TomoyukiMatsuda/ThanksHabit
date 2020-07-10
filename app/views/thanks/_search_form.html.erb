@@ -4,12 +4,12 @@
   </div>
   <%= search_form_for q, url: url, class: "thank-search-form-group" do |f| %>
     <div class="thank-search-form-group__upper">
-      <%= f.date_field :created_at_lteq_end_of_day, class: 'form-control thank-search-form-group__upper--input' %>
-      <div class="thank-search-form-group__upper--label">以前</div>
+      <%= f.date_field :created_at_gteq, class: 'form-control thank-search-form-group__upper--input' %>
+      <div class="thank-search-form-group__upper--label">以降</div>
     </div>
     <div class="thank-search-form-group__lower">
-      <%= f.date_field :created_at_gteq, class: 'form-control thank-search-form-group__lower--input' %>
-      <div class="thank-search-form-group__lower--label">以降</div>
+      <%= f.date_field :created_at_lteq_end_of_day, class: 'form-control thank-search-form-group__lower--input' %>
+      <div class="thank-search-form-group__lower--label">以前</div>
     </div>
     <%= button_tag sanitize('<i class="fas fa-search"></i>検索'), type: "submit", class: "btn thank-search-form-group__submit-btn" %>
     <div class="thank-search-form-group__undo-link">
