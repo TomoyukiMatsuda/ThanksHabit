@@ -81,10 +81,10 @@
 - Ruby: 2.5.1
 - Ruby on Rails: 5.2.2
 - JavaScript
-- SASS
+- Sass
 <br>
 
-**●ライブラリー(Gem)**
+**●ライブラリー・Gem**
 
 - bcrypt
 - pry-byebug
@@ -96,7 +96,12 @@
 <br>
 
 ## :scroll: モックアップ（設計）
-[Cacoo](https://cacoo.com/diagrams/oJpZYMVbNzOlrV8W/BCE92)
+[サイトマップ・ワイヤーフレーム](https://cacoo.com/diagrams/oJpZYMVbNzOlrV8W/BCE92)<br>
+
+**ER図**
+
+<img width="807" alt="スクリーンショット 2020-07-16 16.08.52.png" src="https://qiita-image-store.s3.ap-northeast-1.amazonaws.com/0/621162/36140799-22c6-a785-8b0c-821ce4632f03.png">
+
 <br>
 <br>
 
