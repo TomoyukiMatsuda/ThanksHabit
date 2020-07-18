@@ -5,7 +5,7 @@
   <%= link_to 'ThanksHabit', root_path, class: "header__title" %>
   <ul class="header__nav">
     <% if logged_in? %>
-      <li class="header__nav--link-list"><%= link_to '感謝を送る', root_path %></li>
+      <li class="header__nav--link-list"><%= link_to '感謝を贈る', root_path %></li>
       <li class="header__nav--link-list"><%= link_to 'グループを作る', new_group_path %></li>
       <% unless unpermit_group_users(current_user) == []  %> <!-- 承認していないグループ招待があれば表示 !-->
         <li class="header__nav--link-list nav-item dropdown">
@@ -48,7 +48,7 @@
       <ul class="sidebar__nav--link-list">
         <li>
           <%= link_to root_path do %>
-            <i class="fas fa-hand-holding-heart"></i> 感謝を送る
+            <i class="fas fa-hand-holding-heart"></i> 感謝を贈る
           <% end %>
         </li>
         <li>

@@ -5,7 +5,7 @@ class ThanksController < ApplicationController
     @thank = current_user.thanks.build(thank_params)
 
     if @thank.save
-      flash[:success] = "#{@thank.receiver.name} さんに感謝を送りました"
+      flash[:success] = "#{@thank.receiver.name} さんに感謝を贈りました"
       redirect_to root_url
     else
       flash.now[:danger] = '感謝の送信に失敗しました'
@@ -17,7 +17,7 @@ class ThanksController < ApplicationController
 
   def destroy
     if @thank.destroy
-      flash[:warning] = '送った感謝を取り消しました'
+      flash[:warning] = '贈った感謝を取り消しました'
       redirect_to root_url
     else
       flash[:danger] = '感謝の取り消しに失敗しました'
