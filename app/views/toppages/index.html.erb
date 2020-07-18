@@ -23,10 +23,10 @@
               <% if thank_today(@thanks, user, group) %> <!-- 今日の感謝登録あるかないかで表示内容を変更 !-->
                 <div class="thanked-content">
                   <div class="thanked-content__text">
-                    <i class="far fa-hand-point-right"></i><i class="fas fa-heart"></i> <%= user.name %> さんに今日の感謝を送りました <i class="far fa-laugh-squint"></i>
+                    <i class="far fa-hand-point-right"></i><i class="fas fa-heart"></i> <%= user.name %> さんに今日の感謝を贈りました <i class="far fa-laugh-squint"></i>
                   </div>
                   <div class="thanked-content__undo-btn">
-                    <%= link_to sanitize('<i class="fas fa-heart-broken"></i>'), thank_path(@today_thank), method: :delete, data: { confirm: "#{user.name}さんに送った今日の感謝を取り消しますか？" }, class: 'btn thanked-content__undo-btn--link' %>
+                    <%= link_to sanitize('<i class="fas fa-heart-broken"></i>'), thank_path(@today_thank), method: :delete, data: { confirm: "#{user.name}さんに贈る今日の感謝を取り消しますか？" }, class: 'btn thanked-content__undo-btn--link' %>
                   </div>
                 </div>
               <% else %>
