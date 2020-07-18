@@ -6,7 +6,13 @@
     <%= f.text_field :name, class: 'form-control' %>
   </div>
 
-  <div class="group-form__submit">
-    <%= f.submit '登録', class: "btn group-form__submit--btn" %>
-  </div>
+  <% if current_user.email == "guest_user@mail.com" %>
+    <div class="unable-to-edit-message">
+      <i class="fas fa-exclamation-triangle"></i> ゲストユーザでグループ作成、編集は出来ません
+    </div>
+  <% else %>
+    <div class="group-form__submit">
+      <%= f.submit '登録', class: "btn group-form__submit--btn" %>
+    </div>
+  <% end %>
 <% end %>
