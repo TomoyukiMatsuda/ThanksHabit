@@ -27,7 +27,7 @@
 
 ## 🌐 アプリURL
 
-### **https://thankshabit.herokuapp.com/**
+### **https://www.thankshabit.site/**
 <br>
 ※ゲストユーザアカウントをご用意しておりますので、ぜひ気軽に触ってみてください。
 <br>
@@ -59,6 +59,16 @@
 &nbsp; チーム開発を意識。Git, GitHubの`branch/issue/pull request/merge`を活用して開発をしました。<br>
 &nbsp; 開発手順についてはQiitaで記事にしております。↓↓<br>
 &nbsp; [GitHubのissueを活用した、個人アプリの開発手順を書いてみた](https://qiita.com/tkmd35/items/9612c03dc60b1c516969)
+<br>
+
+- **デプロイ環境**<br>
+&nbsp; デプロイにはAWSを利用（VPC, EC2, Route53, ELB, ACM)<br>
+&nbsp; 当初デプロイにはHerokuを利用していたが、<br>
+&nbsp; ① ページの読み込みに時間がかかること<br>
+&nbsp; ② 簡単にデプロイができるため仕組みがよくわからないこと<br>
+&nbsp; から、AWSを利用しました。<br>
+&nbsp; Herokuに比べてとても大変でしたが、ネットワークの知識についても勉強になりました。<br>
+
 <br>
 <br>
 
