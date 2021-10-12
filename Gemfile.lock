@@ -133,7 +133,8 @@ GEM
       byebug (~> 11.0)
       pry (~> 0.13.0)
     public_suffix (4.0.5)
-    puma (3.12.6)
+    puma (4.3.9)
+      nio4r (~> 2.0)
     rack (2.2.3)
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
@@ -240,7 +241,7 @@ DEPENDENCIES
   mysql2 (>= 0.4.4, < 0.6.0)
   pg
   pry-byebug
-  puma (~> 3.11)
+  puma (~> 4.3)
   rails (~> 5.2.2)
   ransack
   sass-rails (~> 5.0)
